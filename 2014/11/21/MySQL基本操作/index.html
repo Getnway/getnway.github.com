@@ -3,17 +3,56 @@
 <head>
   <meta charset="utf-8">
   
-  <title>getNway的博客</title>
+  <title>MySQL基本操作 | getNway的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此刻就是起点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="getNway的博客">
-<meta property="og:url" content="http://getnway.github.com/index.html">
+  <meta name="description" content="登陆与退出登陆：
+mysql -u root -p
+退出：
+quit 或 exit
+数据库操作新建数据库：
+CREATE DATABASE [数据库名]
+查看数据库：
+SHOW DATABASES
+进入数据库：
+USE [数据库名]
+数据表操作新建表：
+CREATE TABLE [表名] ( [列名] [类型] [约束], ....)
+例如：
+CREATE TABLE `ff` (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基本操作">
+<meta property="og:url" content="http://getnway.github.com/2014/11/21/MySQL基本操作/index.html">
 <meta property="og:site_name" content="getNway的博客">
-<meta property="og:description" content="此刻就是起点">
+<meta property="og:description" content="登陆与退出登陆：
+mysql -u root -p
+退出：
+quit 或 exit
+数据库操作新建数据库：
+CREATE DATABASE [数据库名]
+查看数据库：
+SHOW DATABASES
+进入数据库：
+USE [数据库名]
+数据表操作新建表：
+CREATE TABLE [表名] ( [列名] [类型] [约束], ....)
+例如：
+CREATE TABLE `ff` (">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="getNway的博客">
-<meta name="twitter:description" content="此刻就是起点">
+<meta name="twitter:title" content="MySQL基本操作">
+<meta name="twitter:description" content="登陆与退出登陆：
+mysql -u root -p
+退出：
+quit 或 exit
+数据库操作新建数据库：
+CREATE DATABASE [数据库名]
+查看数据库：
+SHOW DATABASES
+进入数据库：
+USE [数据库名]
+数据表操作新建表：
+CREATE TABLE [表名] ( [列名] [类型] [约束], ....)
+例如：
+CREATE TABLE `ff` (">
   
     <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
   
@@ -183,242 +222,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-QSetting与QVariant" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/10/QSetting与QVariant/" class="article-date">
-  	<time datetime="2015-02-10T14:17:40.000Z" itemprop="datePublished">Feb-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/10/QSetting与QVariant/">QSetting与QVariant</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="QSetting">QSetting</h2><h3 id="初始化">初始化</h3><pre><code><span class="function">QSettings <span class="title">settings</span><span class="params">(<span class="string">"Company"</span>, <span class="string">"App"</span>)</span></span>;
-</code></pre><p>如果在应用多个地方使用<code>QSetting</code>，应该这样设置：</p>
-<pre><code>QCoreApplication::setOrganizationName(<span class="string">"Company"</span>);
-QCoreApplication::setOrganizationDomain(<span class="string">"Company.com"</span>);
-QCoreApplication::setApplicationName(<span class="string">"App"</span>);
-<span class="keyword">...</span>
-QSettings settings;
-</code></pre><p>在<code>OS X</code>中，使用Domains取代Name来识别软件（如果不设置Domain，程序将根据Name推断Domain）<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSetting/">QSetting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QVariant/">QVariant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/10/QSetting与QVariant/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-编译QFtp" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/05/编译QFtp/" class="article-date">
-  	<time datetime="2015-02-05T14:30:07.000Z" itemprop="datePublished">Feb-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/05/编译QFtp/">QFtp的编译与使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="基于QT的FTP客户端">基于QT的FTP客户端</h3><p><strong>Qt5.0</strong>以后，将<code>QFtp</code>移除了，推荐使用<code>QNetworkAccessManager</code>。<br>根据官方的建议使用<code>QNetworkAccessManager</code>进行开发，实现Ftp的上传和下载功能，但当先要实现获取文件列表显示时，却发现有些原本<code>QFtp</code>有的功能，<code>QNetworkAccessManager</code>却没有提供，如获取远程FTP服务器列表功能<code>list()</code>，新建文件夹<code>mkdir()</code>等功能。（更多区别请查看<a href="http://qt-project.org/doc/qt-4.8/qftp.html" title="QFtp Class Reference">QFtp Class Reference</a>与<a href="http://doc.qt.io/qt-5/qnetworkaccessmanager.html" title="QNetworkAccessManager Class">QNetworkAccessManager Class</a>）。<br><img src="http://i.imgur.com/TncRtzj.png" alt="获取FTP服务器列表"></p>
-<p>于是，只能自己找资料了，经搜索发现，可以使用<code>QFtp</code>但要自行编译，且<code>QFtp</code>的代码一直在维护。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ftp乱码/">Ftp乱码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QFtp/">QFtp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/05/编译QFtp/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-QSqlQuery" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/01/QSqlQuery/" class="article-date">
-  	<time datetime="2015-02-01T14:00:37.000Z" itemprop="datePublished">Feb-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/01/QSqlQuery/">QSqlQuery基本使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="QSqlQuery">QSqlQuery</h2><p>QSqlQuery支持DML(data manipulation language)语法，如：<code>SELECT, INSERT,UPDATE and DELETE</code>；也支持DDL(data definition language)语法，如：<code>CREATE TABLE</code>；还支持非标准的特点数据库命令，如：<code>SET DATESTYLE=ISO</code> for PostgreSQL。<br><strong>注意：</strong>在QSqlQuery对象创建前，需打开数据库，且保持其打开状态，否则将出现未定义行为。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSqlQuery/">QSqlQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库操作/">数据库操作</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/01/QSqlQuery/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-QSQLDatabase" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/01/25/QSQLDatabase/" class="article-date">
-  	<time datetime="2015-01-25T15:07:54.000Z" itemprop="datePublished">Jan-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/25/QSQLDatabase/">QSqlDatabase基本使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="QSqlDatabase">QSqlDatabase</h2><h3 id="创建连接">创建连接</h3><pre><code>QSqlDatabase QSqlDatabase::addDatabase(<span class="keyword">const</span> QString &amp; type, <span class="keyword">const</span> QString &amp; connectionName = QLatin1String( defaultConnection )) [<span class="keyword">static</span>]
-</code></pre><p>同一个database可以被创建多个连接。<br>目前支持的驱动类型（Qt5.3）<br><img src="http://i.imgur.com/8PYq7My.png" alt="目前支持的驱动类型"><br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSqlDatabase/">QSqlDatabase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/01/25/QSQLDatabase/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-MySQL基本操作" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-MySQL基本操作" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2014/11/21/MySQL基本操作/" class="article-date">
@@ -434,12 +238,23 @@ QSettings settings;
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/21/MySQL基本操作/">MySQL基本操作</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL基本操作
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -521,82 +336,50 @@ ALTER TABLE [表名] MODIFY [列名<span class="number">1</span>] [类型] [约�
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-  
-    <article id="post-联系方式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/10/21/联系方式/" class="article-date">
-  	<time datetime="2014-10-21T08:49:39.000Z" itemprop="datePublished">Oct-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2015/01/25/QSQLDatabase/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
+          QSqlDatabase基本使用
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/10/21/联系方式/">联系方式</a>
-    </h1>
   
+    <a href="/2014/10/21/联系方式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">联系方式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="联系方式：">联系方式：</h1><pre><code>Gmail：getNway<span class="annotation">@gmail</span>.com
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/联系方式/">联系方式</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
