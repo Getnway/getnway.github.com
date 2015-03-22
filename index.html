@@ -454,69 +454,6 @@ QSettings settings;
 <pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span></span>
 </code></pre><p>进入数据库：</p>
 <pre><code><span class="keyword">USE</span><span class="sqbracket"> [数据库名]</span>
-</code></pre><h2 id="数据表操作">数据表操作</h2><p>新建表：</p>
-<pre><code><span class="tag">CREATE</span> <span class="tag">TABLE</span> <span class="attr_selector">[表名]</span> ( <span class="attr_selector">[列名]</span> <span class="attr_selector">[类型]</span> <span class="attr_selector">[约束]</span>, ....)
-</code></pre><p>例如：</p>
-<pre><code><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`ff`</span> (                                             
-
-      <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">9</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,                          
-
-      <span class="string">`createtime`</span> <span class="keyword">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>,    
-
-      <span class="string">`username`</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,                          
-
-      <span class="string">`record`</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,                            
-
-      <span class="string">`log`</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,                               
-
-      <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> (<span class="string">`id`</span>)                                            
-
-    ) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">24</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=latin1  </span>
-</code></pre><p>查看表：</p>
-<pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span></span>
-</code></pre><p>表结构：</p>
-<pre><code><span class="keyword">DESCRIBE</span><span class="sqbracket"> [表名]</span>
-</code></pre><p>删除表：</p>
-<pre><code>DROP TABLE [表名<span class="number">1</span>],<span class="keyword">...</span>
-</code></pre><h3 id="数据操作">数据操作</h3><p>增加：</p>
-<pre><code>INSERT INTO [表名] ( [列名<span class="number">1</span>],<span class="keyword">...</span> ) VALUES (<span class="string">' [字段1] '</span>, <span class="keyword">...</span>)
-</code></pre><p>删除：</p>
-<pre><code>DELETE FROM [表名] WHERE [列名<span class="number">1</span>] = <span class="string">' [字段1] '</span> <span class="keyword">...</span>
-</code></pre><p>修正：</p>
-<pre><code><span class="operator"><span class="keyword">UPDATE</span> [表名] <span class="keyword">SET</span> [列名<span class="number">1</span>] = <span class="string">"[字段1]</span></span>
-</code></pre><p>查询 ：</p>
-<pre><code>SELECT [列名<span class="number">1</span>], <span class="keyword">...</span> FROM [表名] WHERE [列名<span class="number">1</span>] = <span class="string">"[字段1]"</span> <span class="keyword">...</span>
-</code></pre><h3 id="列操作">列操作</h3><p>添加主键：</p>
-<pre><code><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [表名] <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> PK_[表名] <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span> ( [列名] )</span>
-</code></pre><p>增加列：</p>
-<pre><code><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [表名] <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> [新列名] [类型]</span>
-</code></pre><p>修改列属性： </p>
-<pre><code>ALTER TABLE [表名] CHANGE [列名<span class="number">1</span>] [列名<span class="number">2</span>] [类型] [约束] <span class="keyword">...</span> 
-ALTER TABLE [表名] MODIFY [列名<span class="number">1</span>] [类型] [约束] <span class="keyword">...</span>
-</code></pre><p>删除列：</p>
-<pre><code><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [表名] <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> [列名]</span>
-</code></pre><h3 id="约束">约束</h3><p>自定义默认值：</p>
-<pre><code><span class="value">DEFAULT</span> <span class="attr_selector">[默认值]</span>
-</code></pre><p>自增：</p>
-<pre><code>AUTO_INCREMENT
-</code></pre><p>主键：</p>
-<pre><code><span class="keyword">PRIMARY</span> KEY<span class="sqbracket"> [列名]</span>
-</code></pre><p>外键：</p>
-<pre><code>CONSTRAINT [<span class="link_label">symol可默认产生</span>] FOREIGN KEY ([<span class="link_label">列名</span>]) REFERENCES [<span class="link_label">表名2</span>](<span class="link_url">[列名2]</span>) 
-事件触发限制：[{ON DELETE | ON UPDATE} {RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT}] 
-主表删除或更新时，限制外表外键改动。跟随外键改动，设空值，无动作(默认)，设默认值
-
-参考：http://www.cppblog.com/wolf/articles/69089.html
-在MySQL 3.23.44版本后，InnoDB引擎类型的表支持了外键约束。
-</code></pre><p>外键的使用条件：</p>
-<ol>
-<li>两个表必须是InnoDB表，MyISAM表暂时不支持外键（据说以后的版本有可能支持，但至少目前不支持）；</li>
-<li>外键列必须建立了索引，MySQL 4.1.2以后的版本在建立外键时会自动创建索引，但如果在较早的版本则需要显示建立； </li>
-<li>外键关系的两个表的列必须是数据类型相似，也就是可以相互转换类型的列，比如int和tinyint可以，而int和char则不可以；</li>
-</ol>
-<h2 id="获取服务器时间">获取服务器时间</h2><pre><code><span class="operator"><span class="keyword">select</span> <span class="keyword">now</span>() <span class="keyword">as</span> Systime;</span>
-<span class="operator"><span class="keyword">select</span> <span class="keyword">current_date</span> <span class="keyword">as</span> Systime;</span>
-<span class="operator"><span class="keyword">select</span> <span class="keyword">sysdate</span>() <span class="keyword">as</span> Systime;</span>
 </code></pre>
       
     </div>
@@ -529,6 +466,10 @@ ALTER TABLE [表名] MODIFY [列名<span class="number">1</span>] [类型] [约�
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2014/11/21/MySQL基本操作/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
