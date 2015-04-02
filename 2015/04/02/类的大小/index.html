@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于C++类的大小先明确几点：  
+
+类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；  
+一般编译器都会用 allignment(一般译作“对齐”)；   
+一般成员函数不会影响类大小。
+
+（以下样例均在Win8.1 x64环境下使用dev/vs2013编译）  
+对于单个类先来看看一个诡异的成员变量声明顺序造成的结果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="getNway的博客">
+<meta property="og:url" content="http://getnway.github.com/2015/04/02/类的大小/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="关于C++类的大小先明确几点：  
+
+类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；  
+一般编译器都会用 allignment(一般译作“对齐”)；   
+一般成员函数不会影响类大小。
+
+（以下样例均在Win8.1 x64环境下使用dev/vs2013编译）  
+对于单个类先来看看一个诡异的成员变量声明顺序造成的结果。">
+<meta property="og:image" content="http://i.imgur.com/BlTj4DE.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="getNway的博客">
+<meta name="twitter:description" content="关于C++类的大小先明确几点：  
+
+类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；  
+一般编译器都会用 allignment(一般译作“对齐”)；   
+一般成员函数不会影响类大小。
+
+（以下样例均在Win8.1 x64环境下使用dev/vs2013编译）  
+对于单个类先来看看一个诡异的成员变量声明顺序造成的结果。">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/联系方式">联系方式</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="/./2015/01/21/联系方式/" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 20px;">Qt</a><a href="/tags/数据库/" style="font-size: 15px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/联系方式/" style="font-size: 10px;">联系方式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/联系方式">联系方式</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="/./2015/01/21/联系方式/" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-类的大小" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/02/类的大小/" class="article-date">
+  	<time datetime="2015-04-02T05:25:52.344Z" itemprop="datePublished">Apr-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于C++类的大小">关于C++类的大小</h1><p>先明确几点：  </p>
+<ol>
+<li><strong>类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；</strong>  </li>
+<li><strong>一般编译器都会用 allignment(一般译作“对齐”)；</strong>   </li>
+<li><strong>一般成员函数不会影响类大小。</strong></li>
+</ol>
+<p>（以下样例均在Win8.1 x64环境下使用dev/vs2013编译）  </p>
+<h2 id="对于单个类">对于单个类</h2><p>先来看看<strong>一个诡异的成员变量声明顺序</strong>造成的结果。<br><a id="more"></a><br>代码是这样的：</p>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+<span class="keyword">class</span> A{
+    <span class="keyword">bool</span> a;
+    <span class="keyword">int</span> b;
+    <span class="keyword">bool</span> c;
+}; 
+
+<span class="keyword">class</span> B{
+    <span class="keyword">bool</span> a; <span class="comment">//变量与A中的相同，但顺序不同</span>
+    <span class="keyword">bool</span> c;
+    <span class="keyword">int</span> b;
+};
+
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{
+    <span class="built_in">cout</span>&lt;&lt;<span class="string">"sizeof(A)="</span>&lt;&lt;<span class="keyword">sizeof</span>(A)&lt;&lt;endl;
+    <span class="built_in">cout</span>&lt;&lt;<span class="string">"sizeof(B)="</span>&lt;&lt;<span class="keyword">sizeof</span>(B)&lt;&lt;endl;
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+</code></pre><p>再看输出结果：<br><img src="http://i.imgur.com/BlTj4DE.jpg" alt=""><br>shènmòguì！A类和B类成员都一样，只是成员声明顺序不一样，怎么它们的大小就不一样了。。。而且按照bool占1字节、int占4字节算，应该是1+1+4=6字节才对，怎么会8字节，还有12字节呢。。<br>原因是：<strong>类中的成员要按字为单位即4字节来储存（4字节的要在4倍地址开始；2字节的要在2倍地址开始；而1字节可以在1倍地址既任意地址开始），不足4字节成员如不能与其它不足4字节成员组合成4字节，则要补齐若干字节按4字节排列，以便分界。</strong><br>也就是说在A类中，编译器在每个bool成员后面都插入了3个填充字节以保证每个成员都是按4字节排列，所以也就有了4+4+4=12字节的大小。而在B类中，编译器将a、c组合，再在c变量之后插入2个字节，得到1+1+2+4=8字节的大小。<br>类中的数组变量也一样：</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>{
+    <span class="keyword">char</span> a[<span class="number">13</span>];
+    <span class="keyword">short</span> b;
+}; <span class="comment">//sizeof(A)=16=13+1(补齐)+2</span>
+</code></pre><p>另外一点：<strong>C++中类的静态成员是不占类的大小的。</strong><br>即：</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>{
+    <span class="keyword">static</span> <span class="keyword">int</span> a;
+    <span class="keyword">int</span> b;
+}; <span class="comment">//sizeof(A)=4</span>
+</code></pre><p>第三点：<strong>类的大小与成员函数无关（不管是否为虚函数）。</strong><br>看下面的代码：</p>
+<pre><code><span class="keyword">class</span> <span class="title">A</span>{
+    <span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>{
+    }
+    <span class="keyword">short</span> a;
+}; <span class="comment">//sizeof(A)=2</span>
+</code></pre><p>还有一种情况：<strong>如果类有虚函数，类的大小+4个字节。（用来存放vptr)</strong><br>即：</p>
+<pre><code><span class="keyword">class</span> <span class="title">A</span>{
+    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>{
+    }
+    <span class="keyword">int</span> a;
+};<span class="comment">//sizeof(A)=8</span>
+</code></pre><h2 id="当有继承时">当有继承时</h2><p>首先，<strong>派生类的大小=基类大小+派生类non-static成员变量的大小。</strong></p>
+<pre><code><span class="keyword">class</span> <span class="title">A</span>{
+    <span class="keyword">int</span> a;
+}; <span class="comment">//sizeof(A)=4</span>
+
+<span class="keyword">class</span> <span class="title">B</span>:<span class="title">public</span> <span class="title">A</span>{
+    <span class="keyword">int</span> b;
+    <span class="keyword">static</span> <span class="keyword">int</span> c;
+}; <span class="comment">//sizeof(B)=8=sizeof(A)+sizeof(int)</span>
+</code></pre><p>第二：<strong>如果是虚继承，要+4个字节(用来存放指向虚基对象的指针）。</strong></p>
+<pre><code><span class="keyword">class</span> A{
+    <span class="keyword">int</span> a;
+}; <span class="comment">//sizeof(A)=4</span>
+
+<span class="keyword">class</span> B:<span class="keyword">virtual</span> <span class="keyword">public</span> A{
+    <span class="keyword">int</span> c;
+    <span class="keyword">static</span> <span class="keyword">int</span> d;
+}; <span class="comment">//sizeof(B)=12=sizeof(A)+sizeof(int)+pointer</span>
+</code></pre><h2 id="对于空类">对于空类</h2><p><strong>一般来说，一个空类的大小为１，即ｃ++不允许有0大小的类存在。</strong><br>这主要是为了保证类对象可以被寻址。但是，一个类继承了一个空类，并不代表这个类的大小会增大，  因为一般现在的编译器都有一个“空白基础类别最佳化技术”，它可以使 空基类在继承类中大小为0。</p>
+<pre><code><span class="keyword">class</span> <span class="title">A</span>{
+}; <span class="comment">//sizeof(A)=1</span>
+
+<span class="keyword">class</span> <span class="title">B</span>:<span class="title">public</span> <span class="title">A</span>{
+    <span class="keyword">int</span> a;
+}; <span class="comment">//sizeof(B)=4</span>
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/04/01/构造函数执行顺序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
