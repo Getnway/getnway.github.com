@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   
-  <title>getNway的博客</title>
+  <title>关于C++类的大小 | getNway的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于C++类的大小先明确几点：  
+  <meta name="description" content="先明确几点：  
 
 类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；  
 一般编译器都会用 allignment(一般译作“对齐”)；   
@@ -14,10 +14,10 @@
 （以下样例均在Win8.1 x64环境下使用dev/vs2013编译）  
 对于单个类先来看看一个诡异的成员变量声明顺序造成的结果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="getNway的博客">
-<meta property="og:url" content="http://getnway.github.com/2015/04/02/类的大小/index.html">
+<meta property="og:title" content="关于C++类的大小">
+<meta property="og:url" content="http://getnway.github.com/2015/04/01/类的大小/index.html">
 <meta property="og:site_name" content="getNway的博客">
-<meta property="og:description" content="关于C++类的大小先明确几点：  
+<meta property="og:description" content="先明确几点：  
 
 类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；  
 一般编译器都会用 allignment(一般译作“对齐”)；   
@@ -27,8 +27,8 @@
 对于单个类先来看看一个诡异的成员变量声明顺序造成的结果。">
 <meta property="og:image" content="http://i.imgur.com/BlTj4DE.jpg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="getNway的博客">
-<meta name="twitter:description" content="关于C++类的大小先明确几点：  
+<meta name="twitter:title" content="关于C++类的大小">
+<meta name="twitter:description" content="先明确几点：  
 
 类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；  
 一般编译器都会用 allignment(一般译作“对齐”)；   
@@ -135,7 +135,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 20px;">Qt</a><a href="/tags/数据库/" style="font-size: 15px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/联系方式/" style="font-size: 10px;">联系方式</a>
+						<a href="/tags/C/" style="font-size: 15px;">C++</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 20px;">Qt</a><a href="/tags/数据库/" style="font-size: 15px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/联系方式/" style="font-size: 10px;">联系方式</a>
 					</div>
 				</section>
 				
@@ -208,8 +208,8 @@
       <div class="body-wrap"><article id="post-类的大小" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/04/02/类的大小/" class="article-date">
-  	<time datetime="2015-04-02T05:25:52.344Z" itemprop="datePublished">Apr-02</time>
+      <a href="/2015/04/01/类的大小/" class="article-date">
+  	<time datetime="2015-04-01T13:13:29.000Z" itemprop="datePublished">Apr-01</time>
 </a>
     </div>
   
@@ -218,9 +218,31 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于C++类的大小
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类的大小/">类的大小</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="关于C++类的大小">关于C++类的大小</h1><p>先明确几点：  </p>
+        <p>先明确几点：  </p>
 <ol>
 <li><strong>类大小在 C++标准里没有具体规定，而是由编译器来决定。所以，类的真实大小与平台和编译器有关；</strong>  </li>
 <li><strong>一般编译器都会用 allignment(一般译作“对齐”)；</strong>   </li>
@@ -303,9 +325,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2015/04/02/构造函数执行顺序/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          C++多继承中构造函数执行（析构函数）顺序
+        
+      </div>
+    </a>
   
-    <a href="/2015/04/01/构造函数执行顺序/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+  
+    <a href="/2015/02/10/QSetting与QVariant/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">QSetting与QVariant</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
