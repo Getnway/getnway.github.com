@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>C++多继承中构造函数执行（析构函数）顺序 | getNway的博客</title>
+  <title>[转]全局静态存储区、堆区和栈区深入剖析 | getNway的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++可以单继承，也可以多继承。当子类继承单一父类，在实例化一个子类对象时，构造函数执行顺序为：父类构造-&amp;gt;子类构造（按常理可想到，因为子类包含父类的成员，自然是先构造父类了）。好了，我们知道父类构造函数比子类构造函数先执行，但是当子类继承不止一个父类时，那么多的父类构造函数，它们谁先执行呢？">
+  <meta name="description" content="在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区。其中，系统数据区存放的是系统数据，我们是不能自由访问的，有时候windows系统会突然弹出一个消息框，内容是“内存不能为read”就是错误访问系统数据区的结果；自由存储区用来存放由C延伸而来的malloc()函">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++多继承中构造函数执行（析构函数）顺序">
-<meta property="og:url" content="/2015/04/02/构造函数执行顺序/index.html">
+<meta property="og:title" content="[转]全局静态存储区、堆区和栈区深入剖析">
+<meta property="og:url" content="/2015/04/15/[转]全局静态存储区、堆区和栈区深入剖析/index.html">
 <meta property="og:site_name" content="getNway的博客">
-<meta property="og:description" content="C++可以单继承，也可以多继承。当子类继承单一父类，在实例化一个子类对象时，构造函数执行顺序为：父类构造-&amp;gt;子类构造（按常理可想到，因为子类包含父类的成员，自然是先构造父类了）。好了，我们知道父类构造函数比子类构造函数先执行，但是当子类继承不止一个父类时，那么多的父类构造函数，它们谁先执行呢？">
-<meta property="og:image" content="http://i.imgur.com/UMv4ziG.png">
+<meta property="og:description" content="在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区。其中，系统数据区存放的是系统数据，我们是不能自由访问的，有时候windows系统会突然弹出一个消息框，内容是“内存不能为read”就是错误访问系统数据区的结果；自由存储区用来存放由C延伸而来的malloc()函">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++多继承中构造函数执行（析构函数）顺序">
-<meta name="twitter:description" content="C++可以单继承，也可以多继承。当子类继承单一父类，在实例化一个子类对象时，构造函数执行顺序为：父类构造-&amp;gt;子类构造（按常理可想到，因为子类包含父类的成员，自然是先构造父类了）。好了，我们知道父类构造函数比子类构造函数先执行，但是当子类继承不止一个父类时，那么多的父类构造函数，它们谁先执行呢？">
+<meta name="twitter:title" content="[转]全局静态存储区、堆区和栈区深入剖析">
+<meta name="twitter:description" content="在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区。其中，系统数据区存放的是系统数据，我们是不能自由访问的，有时候windows系统会突然弹出一个消息框，内容是“内存不能为read”就是错误访问系统数据区的结果；自由存储区用来存放由C延伸而来的malloc()函">
   
     <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
   
@@ -182,11 +181,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-构造函数执行顺序" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-[转]全局静态存储区、堆区和栈区深入剖析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/04/02/构造函数执行顺序/" class="article-date">
-  	<time datetime="2015-04-02T05:29:10.000Z" itemprop="datePublished">Apr-02</time>
+      <a href="/2015/04/15/[转]全局静态存储区、堆区和栈区深入剖析/" class="article-date">
+  	<time datetime="2015-04-15T09:21:44.000Z" itemprop="datePublished">Apr-15</time>
 </a>
     </div>
   
@@ -199,7 +198,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      C++多继承中构造函数执行（析构函数）顺序
+      [转]全局静态存储区、堆区和栈区深入剖析
     </h1>
   
 
@@ -208,7 +207,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构造函数/">构造函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/继承/">继承</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/全局静态存储区/">全局静态存储区</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆区/">堆区</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈区/">栈区</a></li></ul>
 	</div>
 
         
@@ -219,69 +218,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>C++可以单继承，也可以多继承。当子类继承单一父类，在实例化一个子类对象时，构造函数执行顺序为：父类构造-&gt;子类构造（按常理可想到，因为子类包含父类的成员，自然是先构造父类了）。好了，我们知道父类构造函数比子类构造函数先执行，但是当子类继承不止一个父类时，那么多的父类构造函数，它们谁先执行呢？<br><a id="more"></a><br>Ok！废话不多说，上代码：</p>
-<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span>
-<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
-<span class="keyword">class</span> B1{
-    <span class="keyword">public</span>:
-    B1(<span class="keyword">int</span> n){
-        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B1 "</span>&lt;&lt;n&lt;&lt;endl;
-    }
-};
-<span class="keyword">class</span> B2{
-    <span class="keyword">public</span>:
-    B2(<span class="keyword">int</span> n){
-        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B2 "</span>&lt;&lt;n&lt;&lt;endl;
-    }
-};
-<span class="keyword">class</span> B3{
-    <span class="keyword">public</span>:
-    B3(){
-        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B3 no param"</span>&lt;&lt;endl;
-    }
-    B3(<span class="keyword">int</span> n){
-        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B3 "</span>&lt;&lt;n&lt;&lt;endl;
-    }
-};
-<span class="keyword">class</span> B4{
-    <span class="keyword">public</span>:
-    B4(){
-        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B4 no param"</span>&lt;&lt;endl;
-    }
-    B4(<span class="keyword">int</span> n){
-        <span class="built_in">cout</span>&lt;&lt;<span class="string">"B4 "</span>&lt;&lt;n&lt;&lt;endl;
-    }
-};
-<span class="keyword">class</span> D:<span class="keyword">public</span> B1,<span class="keyword">public</span> B2,<span class="keyword">public</span> B4,<span class="keyword">public</span> B3{ <span class="comment">//注意继承说明顺序</span>
-    <span class="keyword">public</span>:
-        D(<span class="keyword">int</span> n,<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c,<span class="keyword">int</span> d):B2(a),B1(b),B3(c),B4(d) <span class="comment">//注意参数列表顺序</span>
-        {
-            <span class="built_in">cout</span>&lt;&lt;<span class="string">"D  "</span>&lt;&lt;n&lt;&lt;endl;
-        }
-    <span class="keyword">private</span>:
-        B3 b3; <span class="comment">//这里将调用无参数类型的构造函数</span>
-        B4 b4;
-};
-<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>
-</span>{
-    <span class="function">D <span class="title">d</span><span class="params">(0,1,2,3,4)</span></span>;
-    <span class="keyword">return</span> <span class="number">0</span>;
-} 
-</code></pre><p>运行结果为：  </p>
-<p><img src="http://i.imgur.com/UMv4ziG.png" alt=""></p>
-<p>结果分析：  </p>
-<p>1、 先看输出前四行，执行顺序为B1-&gt;B2-&gt;B4-&gt;B3，且调用的都是有参数类型的父类构造函数，从结果我们可知，<strong>父类构造函数的执行顺序，与继承说明顺序有关，与参数列表顺序无关。</strong> 即：  </p>
-<pre><code><span class="comment">//与继承说明顺序有关  </span>
-class D:public B1,public B2,public B4,public B3   
-<span class="comment">//与参数列表顺序无关  </span>
-<span class="function"><span class="title">D</span><span class="params">(int n,int a,int b,int c,int d)</span></span>:<span class="function"><span class="title">B2</span><span class="params">(a)</span></span>,<span class="function"><span class="title">B1</span><span class="params">(b)</span></span>,<span class="function"><span class="title">B3</span><span class="params">(c)</span></span>,<span class="function"><span class="title">B4</span><span class="params">(d)</span></span>   
-</code></pre><p>2、 继续分析输出的5、6行，可见调用的都是无参数类型的父类构造函数，且执行顺序为：B3-&gt;B4，由此可知，<strong>子类中声明的父类对象，其初始化与声明顺序有关，与继承说明顺序无关</strong>（因为顺明为<code>public B4,public B3</code>，与执行顺序不符）。即：</p>
-<pre><code><span class="comment">//与声明顺序有关  </span>
-B3 b3;  
-B4 b4;  
-<span class="comment">//与继承说明顺序无关  </span>
-<span class="keyword">class</span> D:<span class="keyword">public</span> B1,<span class="keyword">public</span> B2,<span class="keyword">public</span> B4,<span class="keyword">public</span> B3 
-</code></pre><p>3、 由于析构函数与构造函数的执行顺序刚好相反，因此也就不难得出析构函数的执行顺序啦。</p>
+        <p>在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区<br>在C++中，内存可分为系统数据区，自由存储区，文本区，const数据区，全局静态区，堆区和栈区。其中，系统数据区存放的是系统数据，我们是不能自由访问的，有时候windows系统会突然弹出一个消息框，内容是“内存不能为read”就是错误访问系统数据区的结果；自由存储区用来存放由C延伸而来的malloc()函数所分配的数据；文本区存放着我们的函数代码，我们调用函数时的底层行为就类似于先去操作一个指针，而这个指针就指向函数指令所在的地址，也就是在文本区中；const数据区，顾名思义，就是存放不可修改的数据的内存区域，我们定义的const变量都存放在这里。最后，我们来看全局静态存储区、堆区和栈区。<br><a id="more"></a><br>先来看全局静态存储区，在程序中，由static标号定义的数据都存放在全局静态存储区中，不论是在main()函数之外的定义的全局变量，还是在子函数中定义的局部变量，只要在定义之前有static标号，定义之后就会始终存在于全局静态存储区中。当然，在main()函数之外定义的全局静态变量在任何地方都可以访问，而在子函数中定义的局部静态变量只有在定义该变量的模块中可见。但是也存在这样一种现象：如前边所述，即使在子函数中定义的局部静态变量，其存在形式也是静态的，也就是说，只要在变量定义的语句执行之后，即使在变量不可见的地方，只要对该变量所在的地址取地址解析操作，也是可以获得该变量的值的。比如我们在函数fun()中定义了一个static int a=100;假设该变量的地址是0x0042AD54，我们在main()函数中调用fun()之后，如果对0x0042AD54取地址解析，也是可以得到100的：int<em> p=(int</em>)0x0042ad54; int b=*p;这里b被赋值100。由此，我们可以看到，凡是有static定义的变量的生命周期就是整个程序的生命周期，直到程序退出，静态变量所占据的内存才会被释放。 </p>
+<p>堆存储区的行为类似于静态存储区，当我们在堆上分配内存之后，如果不进行手动的释放，其内存是不会自动释放掉的。但是在JAVA中，有一种叫做垃圾清理的机制可以自动清理堆内存，但是在C++中没有这样的机制。也就是说，在C++中，如果我们分配了堆内存，就必须手动释放它。否则如果我们不停的分配堆内存，但是不对其进行释放，当对内存被耗尽是就会造成程序崩溃。 </p>
+<p>一般地，用new分配的变量是存放于堆内存中的，但是返回的指针变量是存放在栈中的。当我们在一个子函数中new了一个变量，但是在函数返回时既没有保存new返回的指针，也没有delete时，就会造成内存泄露。如果我们写的是服务器程序，不断地内存泄露所造成的最终结果就是服务器死机。但是在windows、linux以及其他一些成熟的系统中，都有类似于内存保护的机制。系统会给用户程序分配一定的运行所需的内存，同是也会给系统自身的运行保留一部分内存，这部分内存是用户程序所不能访问的。如果我们编写的程序存在内存泄露，当耗尽系统给应用程序分配的内存之后，程序就会停止运行，而不会造成系统的司机。 </p>
+<p>至于栈内存，也是我们在写程序中用到的最多的情况。程序中定义的每一个临时对象，new所返回的指针，以及递归函数中变量都是存放在栈中的。栈内存是可以自动释放的，当我们在某个模块中定义了一个对象，在该模块结束时，变量所占据的内存就会被系统回收，在定义新的变量时，新的变量就有可能存放在原变量所在的地址上，但是在系统回收栈内存的时候，是不会清空所释放的栈内存中的数据的，只是将栈顶重新调整，并在新数据的到来时将其分配到栈顶。 </p>
+<p>在C++中，虽然可以自由操作内存，但这种技术就像是一把双刃剑，用好了锋利无比，用不好反而会造成一些自己都不能理解的莫名其妙的结果。深入理解内存的分配方式，对于实际编程是大有助益的。</p>
+<p>原文地址：<a href="http://www.jb51.net/article/31879.htm" title="全局静态存储区、堆区和栈区深入剖析" target="_blank" rel="external">全局静态存储区、堆区和栈区深入剖析</a></p>
 
       
     </div>
@@ -291,18 +233,18 @@ B4 b4;
     
 <nav id="article-nav">
   
-    <a href="/2015/04/15/static与const/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/04/17/腾讯一面/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          static与const区别
+          人生的第一次面试——腾讯一面
         
       </div>
     </a>
   
   
-    <a href="/2015/04/01/类的大小/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于C++类的大小</div>
+    <a href="/2015/04/15/static与const/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">static与const区别</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -331,7 +273,7 @@ B4 b4;
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="构造函数执行顺序" data-title="C++多继承中构造函数执行（析构函数）顺序" data-url="/2015/04/02/构造函数执行顺序/"></div>
+	<div class="ds-thread" data-thread-key="[转]全局静态存储区、堆区和栈区深入剖析" data-title="[转]全局静态存储区、堆区和栈区深入剖析" data-url="/2015/04/15/[转]全局静态存储区、堆区和栈区深入剖析/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
