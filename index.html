@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/C/" style="font-size: 16.67px;">C++</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 20px;">Qt</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+						<a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Java/" style="font-size: 10px;">Java</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 16.67px;">Qt</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/数据库/" style="font-size: 13.33px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
 					</div>
 				</section>
 				
@@ -183,6 +183,143 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-struct与class区别" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/18/struct与class区别/" class="article-date">
+  	<time datetime="2015-04-18T14:05:53.000Z" itemprop="datePublished">Apr-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/18/struct与class区别/">struct与class区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-_C语言的struct与C++的class的区别">1. C语言的struct与C++的class的区别</h2><ul>
+<li>C是一种过程化的语言，struct只是作为一种复杂数据类型定义。因此，<strong>C语言的struct只能定义成员变量，不能定义成员函数</strong>。</li>
+</ul>
+<p>在C语言中下面的代码将报错：</p>
+<pre><code><span class="keyword">struct</span> Point
+{
+        <span class="keyword">int</span> x; <span class="comment">// 合法</span>
+        <span class="keyword">int</span> y; <span class="comment">// 合法</span>
+        <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span>
+        </span>{
+                <span class="built_in">printf</span>(<span class="string">"Point print\n"</span>); <span class="comment">//编译错误</span>
+        };
+};
+</code></pre><h2 id="2-_C++的struct与class的区别">2. C++的struct与class的区别</h2><ul>
+<li>最本质的一个区别就是默认的访问控制：<strong>struct默认是public的，class默认是private的（包括成员访问权限和继承方式）</strong>。</li>
+<li>class关键字可定义模板参数，就像typename，但关键字struct不用于定义模板参数。</li>
+<li>C++中的struct可以包含构造函数、成员函数、虚函数，还可以继承、实现多态等。
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/class/">class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struct/">struct</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/18/struct与class区别/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-[转]对比C++ &amp; JAVA – 虚函数、抽象函数、抽象类、接口" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/18/[转]对比C++ & JAVA – 虚函数、抽象函数、抽象类、接口/" class="article-date">
+  	<time datetime="2015-04-18T07:08:40.000Z" itemprop="datePublished">Apr-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/18/[转]对比C++ & JAVA – 虚函数、抽象函数、抽象类、接口/">[转]对比C++ &amp; JAVA – 虚函数、抽象函数、抽象类、接口</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-_C++虚函数_==_Java普通函数">1. C++虚函数 == Java普通函数</h2><ul>
+<li>虚函数的存在是为了多态。  </li>
+<li>C++中普通成员函数加上virtual关键字就成为虚函数  </li>
+<li>Java中其实没有虚函数的概念，它的普通函数就相当于C++的虚函数，动态绑定是Java的默认行为。如果Java中不希望某个函数具有虚函数特性，可以加上final关键字变成非虚函数<br>PS: 其实C++和Java在虚函数的观点大同小异，异曲同工罢了。  </li>
+</ul>
+<h2 id="2-_C++纯虚函数_==_Java抽象函数">2. C++纯虚函数 == Java抽象函数</h2><ul>
+<li>抽象函数或者说是纯虚函数的存在是为了定义接口。  </li>
+<li>C++中纯虚函数形式为：virtual void print() = 0;  </li>
+<li>Java中纯虚函数形式为：abstract void print();<br>PS: 在抽象函数方面C++和Java还是换汤不换药。  </li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚函数/">虚函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚基类/">虚基类</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/18/[转]对比C++ & JAVA – 虚函数、抽象函数、抽象类、接口/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-腾讯一面" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -209,7 +346,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>距离今天搞好一星期，上星期四（4月9号）很高兴被邀去到腾讯一轮面试！这也是人生的第一次工作面试！<br><img src="http://i.imgur.com/qsfJesQ.jpg" alt=""><br>
+        <p>距离今天搞好一星期，上星期四（4月9号）很高兴被邀去到腾讯一轮面试！这也是人生的第一次工作面试！<br><img src="http://i.imgur.com/WxsMt6Z.jpg" alt=""></p>
+<h2 id="先来说说笔试">先来说说笔试</h2><h3 id="身在韶关">身在韶关</h3><p>在一面之前，那天3月28日下午16：18分，收到了腾讯在广州举行的实习生招聘，时间为3月29日下午14：00，由于身在异地而同样投了简历的另一个小伙伴又还没有收到邀请，便纠结着要不要独自去呢？到了晚上，小伙伴也收到了邀请啦！！！既然有伴了，就不必纠结了！马上定下29日早上的火车票，来一场说走就走的笔试吧！<br>
       
     </div>
     
@@ -647,129 +785,10 @@ QSettings settings;
 
 
   
-    <article id="post-QSQLDatabase" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/01/25/QSQLDatabase/" class="article-date">
-  	<time datetime="2015-01-25T15:07:54.000Z" itemprop="datePublished">Jan-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/01/25/QSQLDatabase/">QSqlDatabase基本使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="QSqlDatabase">QSqlDatabase</h2><h3 id="创建连接">创建连接</h3><pre><code>QSqlDatabase QSqlDatabase::addDatabase(<span class="keyword">const</span> QString &amp; type, <span class="keyword">const</span> QString &amp; connectionName = QLatin1String( defaultConnection )) [<span class="keyword">static</span>]
-</code></pre><p>同一个database可以被创建多个连接。<br>目前支持的驱动类型（Qt5.3）<br><img src="http://i.imgur.com/8PYq7My.png" alt="目前支持的驱动类型"><br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSqlDatabase/">QSqlDatabase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/01/25/QSQLDatabase/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-MySQL基本操作" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/21/MySQL基本操作/" class="article-date">
-  	<time datetime="2014-11-21T11:39:39.000Z" itemprop="datePublished">Nov-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/21/MySQL基本操作/">MySQL基本操作</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="登陆与退出">登陆与退出</h2><p>登陆：</p>
-<pre><code><span class="title">mysql</span> -u root -p
-</code></pre><p>退出：</p>
-<pre><code><span class="keyword">quit</span> 或 <span class="keyword">exit</span>
-</code></pre><h2 id="数据库操作">数据库操作</h2><p>新建数据库：</p>
-<pre><code><span class="operator"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [数据库名]</span>
-</code></pre><p>查看数据库：</p>
-<pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span></span>
-</code></pre><p>进入数据库：</p>
-<pre><code><span class="keyword">USE</span><span class="sqbracket"> [数据库名]</span>
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2014/11/21/MySQL基本操作/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
