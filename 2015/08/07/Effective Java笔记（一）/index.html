@@ -339,19 +339,17 @@ Elvis.getInstance();
 </code></pre><p>但这将使得<strong>该类不能被子类化，因为没有可以调用的超类构造器。</strong></p>
 <h2 id="第5条：避免创建不必要的对象">第5条：避免创建不必要的对象</h2><ol>
 <li><p>除了重用不可变的对象之外，也可以重用那些已知不会被修改的可变对象。</p>
-<pre><code><span class="built_in">String</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"abcdef"</span>);    <span class="comment">//语句1，每次执行都创建新String实例</span>
-<span class="built_in">String</span> s = <span class="string">"abcdef"</span>;    <span class="comment">//语句2，每次执行都只使用同一个String实例</span>
-</code></pre><p>对于语句1，每次执行都将创建一个新的String实例，这是没必要的，因为“abcdef”本来就是String对象。</p>
+<p> String s = new String(“abcdef”);    //语句1，每次执行都创建新String实例<br> String s = “abcdef”;    //语句2，每次执行都只使用同一个String实例<br>对于语句1，每次执行都将创建一个新的String实例，这是没必要的，因为“abcdef”本来就是String对象。</p>
 </li>
 <li><p>要优化使用基本数据类型而不是装箱基本类型，要当心无意识的自动装箱。</p>
-<pre><code><span class="keyword">public</span> <span class="keyword">static</span> main(String[] args){
-    Long <span class="keyword">sum</span> = <span class="number">0</span>L;
-    <span class="keyword">for</span>(<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++){
-        <span class="keyword">sum</span> += i;    <span class="comment">//每次执行都会自动装箱，因为sum的类型是Long而不是long</span>
-    }
-    System.out.printIn(<span class="keyword">sum</span>);
+<p> public static main(String[] args){</p>
+<pre><code>Long <span class="keyword">sum</span> = <span class="number">0</span>L;
+<span class="keyword">for</span>(<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++){
+    <span class="keyword">sum</span> += i;    <span class="comment">//每次执行都会自动装箱，因为sum的类型是Long而不是long</span>
 }
-</code></pre></li>
+System.out.printIn(<span class="keyword">sum</span>);
+</code></pre><p> }</p>
+</li>
 </ol>
 <h2 id="第6条：清理过期的对象引用">第6条：清理过期的对象引用</h2><ol>
 <li>一个对象被无意识地保存起来，那么垃圾回收机制不仅不会处理该对象，也不会处理被该对象引用的其他对象。对性能造成潜在的重大影响。</li>
@@ -367,16 +365,16 @@ Elvis.getInstance();
 <li><strong>可用显示的终止方法（如close(),cancel()等结合try-finally结构）来终结类的对象中封装的资源。</strong></li>
 <li><strong>“终结方法链”不会被自动执行，子类覆盖超类终结方法就必须手工调用超类终结方法。</strong></li>
 <li><p><strong>除非作为安全网（对象所有者忘记调用显示终止方法），或则终止非关键的本地资源，否则不要使用终止方法。使用终结方法要记住调用super.finalize()。</strong>作为安全网，要记得记录终结方法的非法性(因为这表示客户端代码中的一个Bug）。如果需要把终结方法与公有的非final类关联起来，请考虑使用终结方法守卫者，一确保及时子类的终结方法未能调用super.finalize，该终结方法也会被执行。  </p>
-<pre><code>public class Foo{
-    //该对象唯一目的是终止外围Foo对象
-    private final Object finalizerGuardian = new Object(){
-        @override protected void finalize() throws Throwable{
-            <span class="keyword">...</span>//终结外围Foo对象
-        }
-    };
-    <span class="keyword">...</span>
-}
-</code></pre></li>
+<p> public class Foo{</p>
+<pre><code>//该对象唯一目的是终止外围Foo对象
+private final Object finalizerGuardian = new Object(){
+    @override protected void finalize() throws Throwable{
+        <span class="keyword">...</span>//终结外围Foo对象
+    }
+};
+<span class="keyword">...</span>
+</code></pre><p> }</p>
+</li>
 </ol>
 
       
