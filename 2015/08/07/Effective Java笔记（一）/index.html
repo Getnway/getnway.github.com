@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Effective Java笔记（一） | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第1条：考虑用静态工厂方法代替构造器优势：  
+
+静态工厂方法有名称。构造器只能与类名相同，而静态工厂方法名能取得更有意义。  
+不必多次构建对象。  
+可以返回原返回类型的任何子类型的对象。  
+使代码更简洁。构造器：Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt; m = new HashMap&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt;();">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java笔记（一）">
+<meta property="og:url" content="/2015/08/07/Effective Java笔记（一）/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="第1条：考虑用静态工厂方法代替构造器优势：  
+
+静态工厂方法有名称。构造器只能与类名相同，而静态工厂方法名能取得更有意义。  
+不必多次构建对象。  
+可以返回原返回类型的任何子类型的对象。  
+使代码更简洁。构造器：Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt; m = new HashMap&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt;();">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective Java笔记（一）">
+<meta name="twitter:description" content="第1条：考虑用静态工厂方法代替构造器优势：  
+
+静态工厂方法有名称。构造器只能与类名相同，而静态工厂方法名能取得更有意义。  
+不必多次构建对象。  
+可以返回原返回类型的任何子类型的对象。  
+使代码更简洁。构造器：Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt; m = new HashMap&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt;();">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Java/" style="font-size: 15px;">Java</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 17.5px;">Qt</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Effective Java笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/07/Effective Java笔记（一）/" class="article-date">
+  	<time datetime="2015-08-07T05:29:03.000Z" itemprop="datePublished">Aug-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Effective Java笔记（一）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Effective-Java/">Effective Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第1条：考虑用静态工厂方法代替构造器">第1条：考虑用静态工厂方法代替构造器</h2><p>优势：  </p>
+<ol>
+<li><strong>静态工厂方法有名称。</strong>构造器只能与类名相同，而静态工厂方法名能取得更有意义。  </li>
+<li><strong>不必多次构建对象。</strong>  </li>
+<li><strong>可以返回原返回类型的任何子类型的对象。</strong>  </li>
+<li><strong>使代码更简洁。</strong><br>构造器：<code>Map&lt;String, List&lt;String&gt;&gt; m = new HashMap&lt;String, List&lt;String&gt;&gt;();</code><br>静态工厂：<code>Map&lt;Stirng, List&lt;String&gt;&gt; m = HashMap.newInstance();</code>  </li>
+</ol>
+<p>缺点：  </p>
+<ol>
+<li><strong>类如果不含 public 或 protect 的构造器，就不能被子类化。</strong>  </li>
+<li><strong>与其他静态方法实际上没有任何区别。</strong>  </li>
+</ol>
+<a id="more"></a>
+<h2 id="第2条：构造器有多个参数时要考虑用构建器">第2条：构造器有多个参数时要考虑用构建器</h2><p>当遇到构造器有多个可选参数时，不使用重载构造器，而使用构建器：  </p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>{
+    <span class="keyword">private</span> <span class="keyword">final</span> String account;
+    <span class="keyword">private</span> <span class="keyword">final</span> String password;
+    <span class="keyword">private</span> <span class="keyword">final</span> String name;
+    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> age;
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Bulider</span></span>{
+        <span class="comment">//必要参数</span>
+        <span class="keyword">private</span> <span class="keyword">final</span> String account;
+        <span class="keyword">private</span> <span class="keyword">final</span> String password;
+
+        <span class="comment">//选填缺省参数值</span>
+        <span class="keyword">private</span> <span class="keyword">final</span> String name = <span class="keyword">null</span>;
+        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> age = <span class="number">0</span>;
+
+        <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">(String account, String password)</span></span>{
+            <span class="keyword">this</span>.account = account;
+            <span class="keyword">this</span>.password = password;
+        }
+
+        <span class="function"><span class="keyword">public</span> Builder <span class="title">name</span><span class="params">(String val)</span></span>{
+            <span class="keyword">this</span>.name = val;
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+
+        <span class="function"><span class="keyword">public</span> Builder <span class="title">age</span><span class="params">(<span class="keyword">int</span> val)</span></span>{
+            <span class="keyword">this</span>.age = val;
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+
+        <span class="function"><span class="keyword">public</span> User <span class="title">bulid</span><span class="params">()</span></span>{
+            <span class="keyword">return</span> <span class="keyword">new</span> User(<span class="keyword">this</span>);
+        }
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="title">User</span><span class="params">(Builder builder)</span></span>{
+        account = builder.account;
+        password = builder.password;
+        name = builder.name;
+        age = builder.age;
+    }
+}
+</code></pre><p>使用时只要：</p>
+<pre><code><span class="type">User</span> user = <span class="keyword">new</span> <span class="type">User</span>.<span class="type">Builder</span>(<span class="string">"admin"</span>,<span class="string">"123456"</span>)
+                    .name(<span class="string">"userName"</span>)
+                    .age(<span class="number">20</span>)
+                    .build<span class="literal">()</span>;
+</code></pre><h2 id="第3条：用私有构造器或者枚举类型强化Singleton属性">第3条：用私有构造器或者枚举类型强化Singleton属性</h2><p>方法一：</p>
+<pre><code>public class Elvis{
+    //公有
+    public static final Elvis INSTANCE = new Elvis();
+    private Elvis(){<span class="keyword">...</span>}
+    <span class="keyword">...</span>
+}
+
+//调用
+Elvis.INSTANCE;    
+</code></pre><p>方法二：</p>
+<pre><code>public class Elvis{
+    //私有
+    private static final Elvis INSTANCE = new Elvis();
+    private Elvis(){<span class="keyword">...</span>}
+    public static Elvis getInstance(){
+        <span class="keyword">return</span> INSTANCE;
+    }
+    <span class="keyword">...</span>
+}
+
+//调用
+Elvis.getInstance();    
+</code></pre><p>为防止客户端通过反射机制调用私用构造器，可以修改构造器，使其在被要求创建第二个是实例时，抛出异常。<br>另外，为了防止每次反序列化时都创建新实例，必须声明所有实例域都是瞬时的，并提供readResolve方法：</p>
+<pre><code><span class="keyword">private</span> <span class="function">Object <span class="title">readReslove</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> INSTANCE;
+}
+</code></pre><p>方法三：  </p>
+<pre><code>public class Elvis{
+    INSTANCE;
+    <span class="keyword">...</span>
+}
+</code></pre><p>此方法是<strong>实现Singleton的最佳方法。</strong>（从java 1.5起可用。）它简洁，提供序列化机制，防止多次实例化。只需编写一个包含单个元素的枚举类型：</p>
+<h2 id="第4条：通过私有构造器强化不可实例化的能力">第4条：通过私有构造器强化不可实例化的能力</h2><p>如果需要编写只有静态方法和静态域的类时，这种工具类是不希望被实例化，其实例化也没有意义的，而为了防止编译器添加默认构造器，只要让类包含私有构造器即可：</p>
+<pre><code>public class UtilityClass{
+    private UtilityClass(){    //私有构造器，防止该类被实例化
+        throw new AssertionError();    //创建对象即抛出错误
+    }
+    <span class="keyword">...</span>
+}
+</code></pre><p>但这将使得<strong>该类不能被子类化，因为没有可以调用的超类构造器。</strong></p>
+<h2 id="第5条：避免创建不必要的对象">第5条：避免创建不必要的对象</h2><ol>
+<li><p>除了重用不可变的对象之外，也可以重用那些已知不会被修改的可变对象。</p>
+<pre><code><span class="built_in">String</span> s = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"abcdef"</span>);    <span class="comment">//语句1，每次执行都创建新String实例</span>
+<span class="built_in">String</span> s = <span class="string">"abcdef"</span>;    <span class="comment">//语句2，每次执行都只使用同一个String实例</span>
+</code></pre><p>对于语句1，每次执行都将创建一个新的String实例，这是没必要的，因为“abcdef”本来就是String对象。</p>
+</li>
+<li><p>要优化使用基本数据类型而不是装箱基本类型，要当心无意识的自动装箱。</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">static</span> main(String[] args){
+    Long <span class="keyword">sum</span> = <span class="number">0</span>L;
+    <span class="keyword">for</span>(<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; Integer.MAX_VALUE; i++){
+        <span class="keyword">sum</span> += i;    <span class="comment">//每次执行都会自动装箱，因为sum的类型是Long而不是long</span>
+    }
+    System.out.printIn(<span class="keyword">sum</span>);
+}
+</code></pre></li>
+</ol>
+<h2 id="第6条：清理过期的对象引用">第6条：清理过期的对象引用</h2><ol>
+<li>一个对象被无意识地保存起来，那么垃圾回收机制不仅不会处理该对象，也不会处理被该对象引用的其他对象。对性能造成潜在的重大影响。</li>
+<li><strong>清除过期引用最好的方法是让包含该引用的变量结束其生命周期。</strong>一旦程序不用某个对象引用就清空，这是没必要的。</li>
+<li><strong>除了自己管理内存的类（如Stack）外，内存泄露的另一个常见来源是缓存。</strong>（可用WeakHashMap。）</li>
+<li>可以使用后台线程（Timer或ScheduledThreadPoolExecutor）或添加新条目时，进行缓存项的清理（如LinkedHashMap类的removeEldestEntry方法）。</li>
+<li><strong>内存泄露的第三个常见来源是监听器和其他回调。</strong>确保回调立即被当作垃圾回收的最佳方法是只保存他们的弱引用（weak reference）。</li>
+</ol>
+<h2 id="第7条：避免使用终结方法">第7条：避免使用终结方法</h2><ol>
+<li>终结方法通常是<strong>不可预测的，也是很危险的，会导致行为不稳定、降低性能，以及可移植性问题。</strong>一般情况下是不必要的。  </li>
+<li>Java语言规范不仅<strong>不保证终结方法会被及时地执行，而且根本就不保证它们会被执行。</strong></li>
+<li><strong>终结方法在不同的JVM平台上的运行表现可能截然不同。</strong></li>
+<li><strong>可用显示的终止方法（如close(),cancel()等结合try-finally结构）来终结类的对象中封装的资源。</strong></li>
+<li><strong>“终结方法链”不会被自动执行，子类覆盖超类终结方法就必须手工调用超类终结方法。</strong></li>
+<li><p><strong>除非作为安全网（对象所有者忘记调用显示终止方法），或则终止非关键的本地资源，否则不要使用终止方法。使用终结方法要记住调用super.finalize()。</strong>作为安全网，要记得记录终结方法的非法性(因为这表示客户端代码中的一个Bug）。如果需要把终结方法与公有的非final类关联起来，请考虑使用终结方法守卫者，一确保及时子类的终结方法未能调用super.finalize，该终结方法也会被执行。  </p>
+<pre><code>public class Foo{
+    //该对象唯一目的是终止外围Foo对象
+    private final Object finalizerGuardian = new Object(){
+        @override protected void finalize() throws Throwable{
+            <span class="keyword">...</span>//终结外围Foo对象
+        }
+    };
+    <span class="keyword">...</span>
+}
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/07/Java基础查漏补缺/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础查漏补缺</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Effective Java笔记（一）" data-title="Effective Java笔记（一）" data-url="/2015/08/07/Effective Java笔记（一）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
