@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Intent基本用法 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Intent基本用法Intent是四大组件（Activity、Service、Broadcast Receiver、Content Provider）的纽带，它解决了Android应用各项组件的通信，它使得调用者与被调用者之间解耦。Intent的主要属性有action、data，另外还有category、type、component、extras。值得注意的是：  
+
+当隐式调用Intent时，将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intent基本用法">
+<meta property="og:url" content="/2015/09/30/Intent基本用法/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="Intent基本用法Intent是四大组件（Activity、Service、Broadcast Receiver、Content Provider）的纽带，它解决了Android应用各项组件的通信，它使得调用者与被调用者之间解耦。Intent的主要属性有action、data，另外还有category、type、component、extras。值得注意的是：  
+
+当隐式调用Intent时，将">
+<meta property="og:image" content="http://i.imgur.com/pIkWpCj.png">
+<meta property="og:image" content="http://i.imgur.com/0eVO8Nm.png">
+<meta property="og:image" content="http://i.imgur.com/4acFPPT.png">
+<meta property="og:image" content="http://i.imgur.com/3vfmRQ3.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intent基本用法">
+<meta name="twitter:description" content="Intent基本用法Intent是四大组件（Activity、Service、Broadcast Receiver、Content Provider）的纽带，它解决了Android应用各项组件的通信，它使得调用者与被调用者之间解耦。Intent的主要属性有action、data，另外还有category、type、component、extras。值得注意的是：  
+
+当隐式调用Intent时，将">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 10px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/Java/" style="font-size: 15px;">Java</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 17.5px;">Qt</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Intent基本用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/30/Intent基本用法/" class="article-date">
+  	<time datetime="2015-09-30T13:15:15.000Z" itemprop="datePublished">Sep-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Intent基本用法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intent/">Intent</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Intent基本用法">Intent基本用法</h1><p>Intent是四大组件（Activity、Service、Broadcast Receiver、Content Provider）的纽带，它解决了Android应用各项组件的通信，它使得调用者与被调用者之间解耦。<br>Intent的主要属性有<code>action、data</code>，另外还有<code>category、type、component、extras</code>。<br>值得注意的是：  </p>
+<ul>
+<li>当隐式调用Intent时，将使用<code>action、type、category</code>来推断合理的组件启动。</li>
+<li><code>type</code>是一个MIME类型，可以通过<code>data</code>推断出来，如果显式指出，则会禁止推断。</li>
+<li>当指定了<code>component</code>属性时（显式调用Intent），其他属性都是可选的，也不会启用推断。</li>
+<li><code>data</code>不是指传递的信息，而是<code>Uri</code>或<code>scheme</code>（如<code>http:</code>或<code>mailto:</code>）。</li>
+<li>可以使用<code>extras</code>传递<code>Bundle</code>对象来传递信息。</li>
+</ul>
+<a id="more"></a>
+<p>Demo地址：<a href="https://github.com/Getnway/IntentDemo" title="IntentDemo" target="_blank" rel="external">https://github.com/Getnway/IntentDemo</a></p>
+<p><img src="http://i.imgur.com/pIkWpCj.png" alt=""></p>
+<h2 id="显式和隐式调用">显式和隐式调用</h2><p><strong>显式调用（Explicit Intents）</strong>是指通过<code>setComponent(ComponentName)</code>或<code>setClass(Context, Class)</code>来指定组件（<code>component</code>）的调用Intent方式。如在<code>MainActivity.java</code>中：</p>
+<pre><code>mBtnA.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{    
+        <span class="comment">//显示Intent</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setClass(MainActivity.<span class="keyword">this</span>, AActivity.class);
+        startActivity(intent);
+    }
+});
+</code></pre><p><strong>隐式调用（Implicit Intents ）</strong>即不明确指定组件，而是靠Intent参数来推断出适合的组件。如：<br>在<code>AndroidManifest.xml</code>中添加了BActivity</p>
+<pre><code><span class="tag">&lt;<span class="title">activity</span>
+    <span class="attribute">android:name</span>=<span class="value">".BActivity"</span>
+    <span class="attribute">android:label</span>=<span class="value">"BActivity"</span> &gt;</span>
+    <span class="tag">&lt;<span class="title">intent-filter</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">action</span> <span class="attribute">android:name</span>=<span class="value">"com.luojiawei.intentdemo.action.B_ACTIVITY"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="title">category</span> <span class="attribute">android:name</span>=<span class="value">"android.intent.category.DEFAULT"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">intent-filter</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">activity</span>&gt;</span>
+</code></pre><p>则可以在<code>MainActivity.java</code>通过以下代码来启动BActivity</p>
+<pre><code>mBtnB.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        <span class="comment">//隐式Intent</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setAction(<span class="string">"com.luojiawei.intentdemo.action.B_ACTIVITY"</span>);
+        intent.addCategory(<span class="string">"android.intent.category.DEFAULT"</span>);
+        startActivity(intent);
+    }
+});
+</code></pre><p>学会使用隐式Intent后，我们就可以使用它来调用系统应用或其他应用，如：<br>打电话：  </p>
+<pre><code>mBtnPhone.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        <span class="comment">//拨打电话10086</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setAction(<span class="string">"android.intent.action.DIAL"</span>);
+        intent.setData(Uri.parse(<span class="string">"tel:10086"</span>));
+        startActivity(intent);
+    }
+});
+</code></pre><p>回到主界面：</p>
+<pre><code>mBtnHome.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        <span class="comment">//隐式Intent</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setAction(<span class="string">"android.intent.action.MAIN"</span>);
+        intent.addCategory(<span class="string">"android.intent.category.HOME"</span>);
+        startActivity(intent);
+    }
+});
+</code></pre><h2 id="通过Intent传递数据">通过Intent传递数据</h2><p><strong>向下一个活动传递数据</strong><br>要通过Intent传递数据，则要使用Intent的另一个属性<code>extras</code>，可以通过调用<code>putExtra()</code>重载方法来实现。如在<code>MainActivity.java</code>中：</p>
+<pre><code>mBtnA.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        String data = <span class="string">"message_from_MainActivity"</span>;<span class="comment">//待传送信息</span>
+        <span class="comment">//显式Intent</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setClass(MainActivity.<span class="keyword">this</span>, AActivity.class);
+        intent.putExtra(<span class="string">"my_data"</span>, data);<span class="comment">//第一个参数为键值</span>
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+});
+</code></pre><p>在<code>AActivity.java</code>中获取数据：</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{
+    <span class="keyword">super</span>.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_a);
+
+    Intent intent = getIntent();
+    String data = intent.getStringExtra(<span class="string">"my_data"</span>);
+    mTextView = (TextView)findViewById(R.id.text_view);
+    mTextView.setText(data);
+
+}
+</code></pre><p><img src="http://i.imgur.com/0eVO8Nm.png" alt=""></p>
+<p><strong>返回数据给上一个活动</strong><br>要想返回数据给上一个活动，只要将原来的启动Activity代码<code>startActivity(Intent intent)</code>换为<code>startActivityForResult(Intent intent, int requestCode)</code>并重写方法<code>onActivityResult(int requestCode, int resultCode, Intent data)</code>即可。<br>在<code>MainActivity.java</code>中：</p>
+<pre><code>mBtnA.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        <span class="comment">//显式Intent</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+});
+</code></pre><p>并且重载<code>onActivityResult()</code>方法：</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span></span>{
+    <span class="keyword">super</span>.onActivityResult(requestCode,resultCode,data);
+    <span class="keyword">switch</span> (requestCode){
+        <span class="keyword">case</span> REQUEST_CODE:  //处理AActivity返回的数据
+            <span class="keyword">if</span>(resultCode == Activity.RESULT_OK){
+                String returnData = data.getStringExtra(<span class="string">"return_data"</span>);
+                mTextView.setText(returnData);
+            }
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            <span class="keyword">break</span>;
+    }
+}
+</code></pre><p>在<code>AActivity.java</code>中：</p>
+<pre><code><span class="comment">//按下返回键，传递信息给上一个Activity</span>
+<span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onBackPressed</span><span class="params">()</span></span>{
+    String retrunData = <span class="string">"return_message_from_AActivity"</span>;
+    Intent intentReturn = <span class="keyword">new</span> Intent();
+    intentReturn.putExtra(<span class="string">"return_data"</span>, retrunData);
+    setResult(Activity.RESULT_OK, intentReturn);
+    finish();
+}
+</code></pre><p><img src="http://i.imgur.com/4acFPPT.png" alt=""></p>
+<h2 id="Intent的更多应用">Intent的更多应用</h2><h3 id="获取联系人">获取联系人</h3><p>监听按钮</p>
+<pre><code>mBtnContact.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        <span class="comment">//获取联系人</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setAction(<span class="string">"android.intent.action.GET_CONTENT"</span>);
+        intent.setType(<span class="string">"vnd.android.cursor.item/phone"</span>);
+        startActivityForResult(intent, PICK_CONTACT);
+    }
+});
+</code></pre><p>重载onActivityForResult()</p>
+<pre><code>@Override
+<span class="keyword">protected</span> <span class="keyword">void</span> onActivityResult(<span class="built_in">int</span> requestCode, <span class="built_in">int</span> resultCode, Intent data){
+    <span class="keyword">super</span>.onActivityResult(requestCode,resultCode,data);
+    <span class="keyword">switch</span> (requestCode){
+        <span class="keyword">case</span> PICK_CONTACT:  <span class="comment">//显示联系人姓名和号码</span>
+            <span class="keyword">if</span>(resultCode == Activity.RESULT_OK){
+                CursorLoader cursorLoader = <span class="keyword">new</span> CursorLoader(MainActivity.<span class="keyword">this</span>,data.getData(), <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);
+                Cursor <span class="built_in">cursor</span> = cursorLoader.loadInBackground();
+                <span class="keyword">if</span>(<span class="built_in">cursor</span> != <span class="keyword">null</span> &amp;&amp; <span class="built_in">cursor</span>.moveToFirst()){
+                    <span class="keyword">String</span> name = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndexOrThrow(ContactsContract.PhoneLookup.DISPLAY_NAME));
+                    <span class="keyword">String</span> number = <span class="built_in">cursor</span>.getString(<span class="built_in">cursor</span>.getColumnIndexOrThrow(ContactsContract.PhoneLookup.NUMBER));
+                    mTextView.setText(name + <span class="string">" "</span> + number);
+                }<span class="keyword">else</span>{
+                    mTextView.setText(<span class="string">"请选择一个联系人"</span>);
+                }
+            }
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            <span class="keyword">break</span>;
+    }
+}
+</code></pre><h3 id="获取相册照片">获取相册照片</h3><p>监听按钮</p>
+<pre><code>mBtnPhoto.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        <span class="comment">//选择一张照片</span>
+        Intent intent = <span class="keyword">new</span> Intent();
+        intent.setAction(<span class="string">"android.intent.action.GET_CONTENT"</span>);
+        intent.setType(<span class="string">"image/*"</span>);
+        intent.addCategory(<span class="string">"android.intent.category.OPENABLE"</span>);
+        startActivityForResult(intent, PICK_RESOURCE);
+    }
+});
+</code></pre><p>重载onActivityForResult()</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span></span>{
+    <span class="keyword">super</span>.onActivityResult(requestCode,resultCode,data);
+    <span class="keyword">switch</span> (requestCode){
+        <span class="keyword">case</span> PICK_RESOURCE: //显示选择的照片
+            <span class="keyword">if</span> (resultCode == Activity.RESULT_OK) {
+                <span class="keyword">try</span>{
+                    <span class="comment">//使用ContentProvider通过URI获取原始图片</span>
+                    Bitmap photo = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
+                    <span class="keyword">if</span>(photo != <span class="keyword">null</span>){
+                        mImgView.setImageBitmap(photo);
+                    }<span class="keyword">else</span>{
+                        mTextView.setText(<span class="string">"请选择一张照片"</span>);
+                    }
+                } <span class="keyword">catch</span> (FileNotFoundException e) {
+                    mTextView.setText(<span class="string">"照片打开失败！请重试..."</span>);
+                    e.printStackTrace();
+                } <span class="keyword">catch</span> (IOException e) {
+                    mTextView.setText(<span class="string">"照片打开失败！请重试..."</span>);
+                    e.printStackTrace();
+                }
+            }
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            <span class="keyword">break</span>;
+    }
+}
+</code></pre><p><img src="http://i.imgur.com/3vfmRQ3.png" alt=""></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/07/Effective Java笔记（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Effective Java笔记（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Intent基本用法" data-title="Intent基本用法" data-url="/2015/09/30/Intent基本用法/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

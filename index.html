@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Java/" style="font-size: 15px;">Java</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 17.5px;">Qt</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+						<a href="/tags/Android/" style="font-size: 10px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/Java/" style="font-size: 15px;">Java</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 17.5px;">Qt</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
 					</div>
 				</section>
 				
@@ -184,6 +184,69 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Intent基本用法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/30/Intent基本用法/" class="article-date">
+  	<time datetime="2015-09-30T13:15:15.000Z" itemprop="datePublished">Sep-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/30/Intent基本用法/">Intent基本用法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Intent基本用法">Intent基本用法</h1><p>Intent是四大组件（Activity、Service、Broadcast Receiver、Content Provider）的纽带，它解决了Android应用各项组件的通信，它使得调用者与被调用者之间解耦。<br>Intent的主要属性有<code>action、data</code>，另外还有<code>category、type、component、extras</code>。<br>值得注意的是：  </p>
+<ul>
+<li>当隐式调用Intent时，将使用<code>action、type、category</code>来推断合理的组件启动。</li>
+<li><code>type</code>是一个MIME类型，可以通过<code>data</code>推断出来，如果显式指出，则会禁止推断。</li>
+<li>当指定了<code>component</code>属性时（显式调用Intent），其他属性都是可选的，也不会启用推断。</li>
+<li><code>data</code>不是指传递的信息，而是<code>Uri</code>或<code>scheme</code>（如<code>http:</code>或<code>mailto:</code>）。</li>
+<li>可以使用<code>extras</code>传递<code>Bundle</code>对象来传递信息。</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intent/">Intent</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/09/30/Intent基本用法/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
   
     <article id="post-Effective Java笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -727,69 +790,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/04/01/类的大小/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-QSetting与QVariant" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/10/QSetting与QVariant/" class="article-date">
-  	<time datetime="2015-02-10T14:17:40.000Z" itemprop="datePublished">Feb-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/10/QSetting与QVariant/">QSetting与QVariant</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="QSetting">QSetting</h2><h3 id="初始化">初始化</h3><pre><code><span class="function">QSettings <span class="title">settings</span><span class="params">(<span class="string">"Company"</span>, <span class="string">"App"</span>)</span></span>;
-</code></pre><p>如果在应用多个地方使用<code>QSetting</code>，应该这样设置：</p>
-<pre><code>QCoreApplication::setOrganizationName(<span class="string">"Company"</span>);
-QCoreApplication::setOrganizationDomain(<span class="string">"Company.com"</span>);
-QCoreApplication::setApplicationName(<span class="string">"App"</span>);
-<span class="keyword">...</span>
-QSettings settings;
-</code></pre><p>在<code>OS X</code>中，使用Domains取代Name来识别软件（如果不设置Domain，程序将根据Name推断Domain）<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSetting/">QSetting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QVariant/">QVariant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/10/QSetting与QVariant/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
