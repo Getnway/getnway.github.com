@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android项目打包与签名对比 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="打包项目AS打包
+首先在IDE中打开Build - Generate Signed APK...  
+如果已有签名文件，则按下图说明填写签名文件路径、密码、别名等，填写完毕点击Next进入第4步。如果还没有签名文件可以点击Create new...到第3步生成一个新签名文件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android项目打包与签名对比">
+<meta property="og:url" content="/2015/11/12/Android项目打包与签名对比/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="打包项目AS打包
+首先在IDE中打开Build - Generate Signed APK...  
+如果已有签名文件，则按下图说明填写签名文件路径、密码、别名等，填写完毕点击Next进入第4步。如果还没有签名文件可以点击Create new...到第3步生成一个新签名文件。">
+<meta property="og:image" content="http://i.imgur.com/Og0AKlz.png">
+<meta property="og:image" content="http://i.imgur.com/XTiCQsl.png">
+<meta property="og:image" content="http://i.imgur.com/5iE9syy.png">
+<meta property="og:image" content="http://i.imgur.com/B0ecWAd.png">
+<meta property="og:image" content="http://i.imgur.com/Fn8f82R.png">
+<meta property="og:image" content="http://i.imgur.com/CA65SfA.png">
+<meta property="og:image" content="http://i.imgur.com/3yqsiY1.png">
+<meta property="og:image" content="http://i.imgur.com/RurLkXx.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android项目打包与签名对比">
+<meta name="twitter:description" content="打包项目AS打包
+首先在IDE中打开Build - Generate Signed APK...  
+如果已有签名文件，则按下图说明填写签名文件路径、密码、别名等，填写完毕点击Next进入第4步。如果还没有签名文件可以点击Create new...到第3步生成一个新签名文件。">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 18px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective/" style="font-size: 14px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 14px;">FFmpeg</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JNI/" style="font-size: 12px;">JNI</a><a href="/tags/Java/" style="font-size: 14px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 18px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 10px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 16px;">Qt</a><a href="/tags/RxJava/" style="font-size: 12px;">RxJava</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 12px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 12px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Android项目打包与签名对比" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/12/Android项目打包与签名对比/" class="article-date">
+  	<time datetime="2015-11-12T02:13:34.000Z" itemprop="datePublished">Nov-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android项目打包与签名对比
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/签名/">签名</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="打包项目">打包项目</h2><h3 id="AS打包">AS打包</h3><ol>
+<li>首先在IDE中打开<code>Build - Generate Signed APK...</code><br><img src="http://i.imgur.com/Og0AKlz.png" alt="">  </li>
+<li>如果已有签名文件，则按下图说明填写签名文件路径、密码、别名等，填写完毕点击<code>Next</code>进入第4步。<br>如果还没有签名文件可以点击<code>Create new...</code>到第3步生成一个新签名文件。  </li>
+</ol>
+<a id="more"></a>  
+<p><img src="http://i.imgur.com/XTiCQsl.png" alt="">  </p>
+<ol>
+<li>在下图中填写相关信息，点击<code>OK</code>即可生成新签名文件，接着回到第2步填写相关信息。<br><img src="http://i.imgur.com/5iE9syy.png" alt="">  </li>
+<li>依次填写apk输出路径、构建的版本类型，再点击<code>Finish</code>即可开始打包。<br><img src="http://i.imgur.com/B0ecWAd.png" alt="">  </li>
+<li>经过一段时间后，你看到下图，就代表你的apk已经打包完成啦~~可以进入apk输出路径查看文件。<br><img src="http://i.imgur.com/Fn8f82R.png" alt=""></li>
+</ol>
+<h3 id="用360打包工具打包">用360打包工具打包</h3><p>工具下载地址：<a href="http://pan.baidu.com/s/1hq99yoW" target="_blank" rel="external">360Signer for Windows</a><br>注意，该工具支持批量签名：可一次性选择多个需要签名的文件，一次性完成多个加固文件的签名工作。<br>下载完毕后，解压无需安装，双击<code>360Signer.exe</code>即可打开软件。<br><img src="http://i.imgur.com/CA65SfA.png" alt=""><br>填写相关信息，点击<code>一键签名</code>，稍等片刻即可完成签名。<br><img src="http://i.imgur.com/3yqsiY1.png" alt="">  </p>
+<h3 id="用命令打包">用命令打包</h3><p>使用JDK自带的jarsigner工具来完成签名。jarsigner工具的命令格式是：</p>
+<pre><code># <span class="tag">jarsigner</span>的命令格式
+
+<span class="tag">jarsigner</span> <span class="tag">-verbose</span> <span class="tag">-keystore</span> <span class="attr_selector">[您的签名文件路径]</span> <span class="tag">-signedjar</span> <span class="attr_selector">[签名后apk放路径]</span> <span class="attr_selector">[待签名apk路径]</span> <span class="attr_selector">[别名]</span>
+
+<span class="id">#jarsigner</span>的参数说明
+
+<span class="tag">-keystore</span> 参数指定您的签名文件的绝对路径，例如：<span class="tag">c</span>:\<span class="tag">mykeystore</span><span class="class">.jks</span>
+<span class="tag">-signedjar</span> 参数指定签名后<span class="tag">apk</span>存放绝对的路径，例如 <span class="tag">c</span>:\<span class="tag">hello-signed</span><span class="class">.apk</span>
+<span class="attr_selector">[待签名apk路径]</span> 指定要签名<span class="tag">apk</span>文件的绝对路径，例如 <span class="tag">c</span>:\<span class="tag">hello-unsigned</span><span class="class">.apk</span>
+<span class="attr_selector">[别名]</span> 是指您创建签名文件时，您设置的别名（<span class="tag">Alias</span>）
+</code></pre><h2 id="对比apk签名指纹">对比apk签名指纹</h2><p>当我们的应用需要上线到不同应用市场时，有些应用市场需要对该应用市场提供的<code>空包</code>进行签名，并上传签名后的空包，应用市场会验证签名后的空包和我们的apk是否使用同一签名文件签名，只有签名相同时，我们的应用才能上线。<br>为了能验证通过，我们可以先本地对比签名后的空包和我们的应用的签名指纹。  </p>
+<ol>
+<li><p>查找apk的<code>RSA文件</code>  </p>
+<pre><code>&gt;jar tf your_app_name.apk <span class="string">|findstr RSA</span>
+META-INF/CERT.RSA
+</code></pre></li>
+<li><p>从apk中解压RSA文件  </p>
+<pre><code>&gt;jar xf your_app_name<span class="class">.apk</span> META-INF/CERT.RSA
+</code></pre></li>
+<li><p>获取签名指纹</p>
+<pre><code>&gt;keytool -printcert -<span class="keyword">file</span> META-<span class="keyword">INF</span>/CERT.RSA
+</code></pre></li>
+</ol>
+<p><img src="http://i.imgur.com/RurLkXx.png" alt="">  </p>
+<p>参考：<br><a href="http://www.zhihu.com/question/20749413" target="_blank" rel="external">如何判断 Android 应用的 Apk 签名是否一致？</a>  </p>
+<p>扩展：<br><a href="http://stormzhang.com/devtools/2015/01/15/android-studio-tutorial6/" target="_blank" rel="external">Android Studio系列教程六—Gradle多渠道打包</a><br><a href="http://tech.meituan.com/mt-apk-packaging.html" target="_blank" rel="external">美团Android自动化之旅—生成渠道包</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/20/FFmpeg例子报错及解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          FFmpeg例子报错及解决方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/03/Shell编程基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Shell编程基础</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android项目打包与签名对比" data-title="Android项目打包与签名对比" data-url="/2015/11/12/Android项目打包与签名对比/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

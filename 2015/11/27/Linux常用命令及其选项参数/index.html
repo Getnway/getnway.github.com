@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux常用命令及其选项参数 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="manman命令用于查看其他命令的使用说明文档，按q推出文档。本文未介绍的或者需要查看详细命令说明的都可以用man。用法：man [命令]
+#例如
+man ls      #查看ls命令说明
+man chmod    #查看chmod命令说明
+
+#也可以使用--help：
+ls --help        #查看ls命令说明
+chmod --help    #查看chmod命令说明
+vim用于编辑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令及其选项参数">
+<meta property="og:url" content="/2015/11/27/Linux常用命令及其选项参数/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="manman命令用于查看其他命令的使用说明文档，按q推出文档。本文未介绍的或者需要查看详细命令说明的都可以用man。用法：man [命令]
+#例如
+man ls      #查看ls命令说明
+man chmod    #查看chmod命令说明
+
+#也可以使用--help：
+ls --help        #查看ls命令说明
+chmod --help    #查看chmod命令说明
+vim用于编辑">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令及其选项参数">
+<meta name="twitter:description" content="manman命令用于查看其他命令的使用说明文档，按q推出文档。本文未介绍的或者需要查看详细命令说明的都可以用man。用法：man [命令]
+#例如
+man ls      #查看ls命令说明
+man chmod    #查看chmod命令说明
+
+#也可以使用--help：
+ls --help        #查看ls命令说明
+chmod --help    #查看chmod命令说明
+vim用于编辑">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 18px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective/" style="font-size: 14px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 14px;">FFmpeg</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JNI/" style="font-size: 12px;">JNI</a><a href="/tags/Java/" style="font-size: 14px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 18px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 10px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 16px;">Qt</a><a href="/tags/RxJava/" style="font-size: 12px;">RxJava</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 12px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 12px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Linux常用命令及其选项参数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/27/Linux常用命令及其选项参数/" class="article-date">
+  	<time datetime="2015-11-27T12:33:32.000Z" itemprop="datePublished">Nov-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux常用命令及其选项参数
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="man">man</h3><p>man命令用于查看其他命令的使用说明文档，按q推出文档。<br>本文未介绍的或者需要查看详细命令说明的都可以用man。<br>用法：man [命令]</p>
+<pre><code>#例如
+<span class="keyword">man</span> <span class="keyword">ls</span>      #查看<span class="keyword">ls</span>命令说明
+<span class="keyword">man</span> chmod    #查看chmod命令说明
+
+#也可以使用--<span class="keyword">help</span>：
+<span class="keyword">ls</span> --<span class="keyword">help</span>        #查看<span class="keyword">ls</span>命令说明
+chmod --<span class="keyword">help</span>    #查看chmod命令说明
+</code></pre><h3 id="vim">vim</h3><p>用于编辑或创建文件。创建文件还可以用touch命令。<br>用法: vim [参数] [文件 ..]    文件存在则打开编辑，否则创建这个文件。</p>
+<pre><code>-<span class="ruby">g            使用图形界面 (同 <span class="string">"gvim"</span>)
+</span>-<span class="ruby"><span class="constant">R</span>            只读模式 (同 <span class="string">"view"</span>)   
+</span>-<span class="ruby">m            不可修改(写入文件)
+</span>+            启动后跳到文件末尾
++&lt;lnum&gt;    启动后跳到第 &lt;lnum&gt; 行
+</code></pre><a id="more"></a>  
+<h3 id="ls">ls</h3><p>列出文件信息。<br>用法：ls [选项]… [文件]…</p>
+<pre><code>-<span class="ruby">a, --all            不隐藏任何以. 开始的项目
+</span>-<span class="ruby"><span class="constant">A</span>, --almost-all    列出除. 及.. 以外的任何项目
+</span>    -<span class="ruby">-author        与-l 同时使用时列出每个文件的作者
+</span>-<span class="ruby">l                    使用较长格式列出信息
+</span>-<span class="ruby"><span class="constant">L</span>                    当显示符号链接的文件信息时，显示符号链接所指示的对象而并非符号链接本身的信息
+</span>-<span class="ruby">m                    所有项目以逗号分隔，并填满整行行宽
+</span>-<span class="ruby">n                    类似 -l，但列出<span class="constant">UID</span> 及<span class="constant">GID</span> 号
+</span>-<span class="ruby">o                    类似 -l，但不列出有关组的信息
+</span>-<span class="ruby">p                    对目录加上表示符号<span class="string">"/"</span>
+</span>-<span class="ruby">d                    仅列出目录本身，而不是列出目录的文件数据
+</span>-<span class="ruby">h                    将文件容量以较易读的方式（<span class="constant">GB</span>，kB等）列出来
+</span>-<span class="ruby"><span class="constant">R</span>                    连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来
+</span>
+#排序：
+-<span class="ruby"><span class="constant">U</span>        无
+</span>-<span class="ruby"><span class="constant">S</span>        按大小
+</span>-<span class="ruby">t        按时间
+</span>-<span class="ruby">v        按版本
+</span>-<span class="ruby"><span class="constant">X</span>        按扩展名
+</span>
+#例如：
+ls -lS        #按文件大小列出文件
+</code></pre><h3 id="find">find</h3><p>查找的功能非常强大的命令。<br>用法：find [PATH] [option] [action]</p>
+<pre><code><span class="comment"># 与时间有关的参数：  </span>
+-<span class="literal">mtime</span> n : n为数字，意思为在n天之前的“一天内”被更改过的文件；  
+-<span class="literal">mtime</span> +n : 列出在n天之前（不含n天本身）被更改过的文件名；  
+-<span class="literal">mtime</span> -n : 列出在n天之内（含n天本身）被更改过的文件名；  
+-newer <span class="keyword">file</span> : 列出比<span class="keyword">file</span>还要新的文件名  
+
+<span class="comment"># 例如：  </span>
+find /<span class="literal">root</span> -<span class="literal">mtime</span> <span class="number">0</span> <span class="comment"># 在当前目录下查找今天之内有改动的文件  </span>
+
+<span class="comment"># 与用户或用户组名有关的参数：  </span>
+-<span class="keyword">user</span> <span class="literal">name</span> : 列出文件所有者为<span class="literal">name</span>的文件  
+-<span class="literal">group</span> <span class="literal">name</span> : 列出文件所属用户组为<span class="literal">name</span>的文件  
+-<span class="literal">uid</span> n : 列出文件所有者为用户<span class="constant">I</span>D为n的文件  
+-<span class="built_in">gid</span> n : 列出文件所属用户组为用户组<span class="constant">I</span>D为n的文件  
+
+<span class="comment"># 例如：  </span>
+find /<span class="literal">home</span>/ljianhui -<span class="keyword">user</span> ljianhui <span class="comment"># 在目录/home/ljianhui中找出所有者为ljianhui的文件  </span>
+
+<span class="comment"># 与文件权限及名称有关的参数：  </span>
+-<span class="literal">name</span> filename ：找出文件名为filename的文件  
+-size [+-]<span class="constant">S</span>IZE ：找出比<span class="constant">S</span>IZE还要大（+）或小（-）的文件  
+-tpye <span class="constant">T</span>YPE ：查找文件的类型为<span class="constant">T</span>YPE的文件，<span class="constant">T</span>YPE的值主要有：一般文件（f)、设备文件（b、c）、  
+         目录（d）、连接文件（l）、socket（s）、<span class="constant">F</span>IFO管道文件（p）；  
+-perm <span class="literal">mode</span> ：查找文件权限刚好等于<span class="literal">mode</span>的文件，<span class="literal">mode</span>用数字表示，如<span class="number">0755</span>；  
+-perm -<span class="literal">mode</span> ：查找文件权限必须要全部包括<span class="literal">mode</span>权限的文件，<span class="literal">mode</span>用数字表示  
+-perm +<span class="literal">mode</span> ：查找文件权限包含任一<span class="literal">mode</span>的权限的文件，<span class="literal">mode</span>用数字表示  
+
+<span class="comment"># 例如：  </span>
+find / -<span class="literal">name</span> passwd <span class="comment"># 查找文件名为passwd的文件  </span>
+find . -perm <span class="number">0755</span> <span class="comment"># 查找当前目录中文件权限的0755的文件  </span>
+find . -size +<span class="number">12</span>k <span class="comment"># 查找当前目录中大于12KB的文件，注意c表示byte  </span>
+</code></pre><h3 id="ps">ps</h3><p>列出当前进程。<br>用法：ps [选项]</p>
+<pre><code>-<span class="constant">A</span>        列出所有进程-a ：不与terminal有关的所有进程
+-u        有效用户的相关进程
+-x        一般与a参数一起使用，可列出较完整的信息
+-l        较长，较详细地将<span class="constant">P</span>ID的信息列出
+r        只显示正在运行进程
+<span class="constant">T</span>        显示当前terminal所有进程
+
+<span class="comment">#排序：</span>
+--sort [+|-]key    key为表头pid，tty，time，cmd等
+
+<span class="comment">#例如：</span>
+<span class="built_in">ps</span> -<span class="constant">A</span> --sort +pid    <span class="comment">#根据pid顺序显示所有进程</span>
+<span class="built_in">ps</span> aux             <span class="comment"># 查看系统所有的进程数据</span>
+<span class="built_in">ps</span> ax                 <span class="comment"># 查看不与terminal有关的所有进程</span>
+<span class="built_in">ps</span> -lA             <span class="comment"># 查看系统所有的进程数据</span>
+<span class="built_in">ps</span> axjf             <span class="comment"># 查看连同一部分进程树状态</span>
+</code></pre><h3 id="kill">kill</h3><p>用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用。<br>用法：kill -signal PID</p>
+<pre><code><span class="preprocessor">#signal（最前面的数字为信号的代号，使用时可以用代号代替相应的信号）</span>
+<span class="number">1</span>：SIGHUP，启动被终止的进程  
+<span class="number">2</span>：SIGINT，相当于输入ctrl+c，中断一个程序的进行  
+<span class="number">9</span>：SIGKILL，强制中断一个进程的进行  
+<span class="number">15</span>：SIGTERM，以正常的结束进程方式来终止进程  
+<span class="number">17</span>：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行 
+
+<span class="preprocessor">#例如：</span>
+<span class="preprocessor"># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程  </span>
+kill -SIGTERM %<span class="number">1</span>
+<span class="preprocessor"># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得</span>
+kill -SIGHUP<span class="constant"> PID </span> 
+</code></pre><h3 id="tar">tar</h3><p>用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。<br>用法: tar [选项…] [FILE]…</p>
+<pre><code>-<span class="ruby">c ：新建打包文件  
+</span>-<span class="ruby">t ：查看打包文件的内容含有哪些文件名  
+</span>-<span class="ruby">x ：解打包或解压缩的功能，可以搭配-<span class="constant">C</span>（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同一条命令中  
+</span>-<span class="ruby">j ：通过bzip2的支持进行压缩/解压缩  
+</span>-<span class="ruby">z ：通过gzip的支持进行压缩/解压缩  
+</span>-<span class="ruby">v ：在压缩/解压缩过程中，将正在处理的文件名显示出来  
+</span>-<span class="ruby">f filename ：filename为要处理的文件  
+</span>-<span class="ruby"><span class="constant">C</span> dir ：指定压缩/解压缩的目录dir  
+</span>
+#例如：
+压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称  
+查询：tar -jtv -f filename.tar.bz2  
+解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录  
+</code></pre><h3 id="chmod">chmod</h3><p>用于改变文件的权限。<br>用法：chmod [选项]… 模式[,模式]… 文件…</p>
+<pre><code>-R：进行递归的持续更改，即连同子目录下的所有文件都会更改 
+
+<span class="comment">#chmod还可以使用u（user）、g（group）、o（other）、a（all）和+（加入）、-（删除）、=（设置）跟rwx搭配来对文件的权限进行更改。</span>
+
+<span class="comment"># 例如：  </span>
+chmod <span class="number">0755</span> <span class="type">file</span> <span class="comment"># 把file的文件权限改变为-rxwr-xr-x  </span>
+chmod g+w <span class="type">file</span> <span class="comment"># 向file的文件权限中加入用户组可写权限  </span>
+</code></pre><h3 id="rm">rm</h3><p>用于删除文件或目录。<br>用法：rm [选项]… 文件…</p>
+<pre><code>-<span class="ruby">f ：就是force的意思，忽略不存在的文件，不会出现警告消息  
+</span>-<span class="ruby">i ：互动模式，在删除前会询问用户是否操作  
+</span>-<span class="ruby">r ：递归删除，最常用于目录删除，它是一个非常危险的参数  
+</span>
+#例如：
+rm -i file # 删除文件file，在删除之前会询问是否进行该操作  
+rm -fr dir # 强制删除目录dir中的所有文件  
+</code></pre><h3 id="mv">mv</h3><p>用于移动文件、目录或更名。<br>用法：mv [选项]… [-T] 源文件 目标文件<br>　或：mv [选项]… 源文件… 目录<br>　或：mv [选项]… -t 目录 源文件…</p>
+<pre><code>-<span class="ruby">f ：force强制的意思，如果目标文件已经存在，不会询问而直接覆盖  
+</span>-<span class="ruby">i ：若目标文件已经存在，就会询问是否覆盖  
+</span>-<span class="ruby">u ：若目标文件已经存在，且比目标文件新，才会更新  
+</span>
+#注：该命令可以把一个文件或多个文件一次移动一个文件夹中，但是最后一个目标文件一定要是“目录”。
+
+#例如：
+mv file1 file2 file3 dir # 把文件file1、file2、file3移动到目录dir中  
+mv file1 file2 # 把文件file1重命名为file2  
+</code></pre><h3 id="cp">cp</h3><p>用于复制文件。<br>用法：cp [选项]… [-T] 源文件 目标文件<br>　或：cp [选项]… 源文件… 目录<br>　或：cp [选项]… -t 目录 源文件…</p>
+<pre><code>-<span class="ruby">a ：将文件的特性一起复制  
+</span>-<span class="ruby">p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份  
+</span>-<span class="ruby">i ：若目标文件已经存在时，在覆盖时会先询问操作的进行  
+</span>-<span class="ruby">r ：递归持续复制，用于目录的复制行为  
+</span>-<span class="ruby">u ：目标文件与源文件有差异时才会复制  
+</span>
+#cp还可以把多个文件一次性地复制到一个目录下
+
+#例如：
+cp -a file1 file2 #连同文件的所有特性把文件file1复制成文件file2  
+cp file1 file2 file3 dir #把文件file1、file2、file3复制到目录dir中  
+</code></pre><h3 id="cat">cat</h3><p>用于查看文本文件的内容，后接要查看的文件名，通常可用管道与more和less一起使用，从而可以一页页地查看数据。<br>用法：cat [选项]… [文件]…</p>
+<pre><code>-E, <span class="comment">--show-ends          在每行结束处显示"$"</span>
+-n, <span class="comment">--number             对输出的所有行编号</span>
+-s, <span class="comment">--squeeze-blank      不输出多行空行</span>
+
+<span class="comment">#例如：</span>
+cat <span class="type">text</span> | less <span class="comment"># 查看text文件中的内容  </span>
+<span class="comment"># 注：这条命令也可以使用less text来代替  </span>
+</code></pre><p>参考：<a href="http://blog.csdn.net/ljianhui/article/details/11100625" target="_blank" rel="external">初窥Linux 之 我最常用的20条命令 </a> </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/27/Linux软件安装及卸载/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Linux软件安装及卸载
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/27/安装完Linux（Kali）要做的事/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">安装完Linux（Kali）要做的事</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Linux常用命令及其选项参数" data-title="Linux常用命令及其选项参数" data-url="/2015/11/27/Linux常用命令及其选项参数/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

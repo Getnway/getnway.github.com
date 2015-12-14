@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android Studio中使用NDK | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="编译环境
+Win10 64bit 企业版
+Android Studio 1.5
+android-ndk-r10e
+
+Here we go！
+新建项目这里新建一个项目名为FFmpegDemo的项目（过程略）
+
+声明native方法在MainActivity中声明native方法：
+public native String getStringFromNative();
+然后Build - Make P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio中使用NDK">
+<meta property="og:url" content="/2015/12/07/Android Studio中使用NDK/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="编译环境
+Win10 64bit 企业版
+Android Studio 1.5
+android-ndk-r10e
+
+Here we go！
+新建项目这里新建一个项目名为FFmpegDemo的项目（过程略）
+
+声明native方法在MainActivity中声明native方法：
+public native String getStringFromNative();
+然后Build - Make P">
+<meta property="og:image" content="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK7.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Studio中使用NDK">
+<meta name="twitter:description" content="编译环境
+Win10 64bit 企业版
+Android Studio 1.5
+android-ndk-r10e
+
+Here we go！
+新建项目这里新建一个项目名为FFmpegDemo的项目（过程略）
+
+声明native方法在MainActivity中声明native方法：
+public native String getStringFromNative();
+然后Build - Make P">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 18px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective/" style="font-size: 14px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 14px;">FFmpeg</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JNI/" style="font-size: 12px;">JNI</a><a href="/tags/Java/" style="font-size: 14px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 18px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 10px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 16px;">Qt</a><a href="/tags/RxJava/" style="font-size: 12px;">RxJava</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 12px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 12px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Android Studio中使用NDK" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/07/Android Studio中使用NDK/" class="article-date">
+  	<time datetime="2015-12-07T02:29:23.000Z" itemprop="datePublished">Dec-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Studio中使用NDK
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JNI/">JNI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NDK/">NDK</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="编译环境">编译环境</h2><ul>
+<li>Win10 64bit 企业版</li>
+<li>Android Studio 1.5</li>
+<li>android-ndk-r10e</li>
+</ul>
+<h2 id="Here_we_go！">Here we go！</h2><ol>
+<li><p>新建项目<br>这里新建一个项目名为<code>FFmpegDemo</code>的项目（过程略）<br><img src="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK2.png" alt=""></p>
+</li>
+<li><p>声明native方法<br>在<code>MainActivity</code>中声明native方法：</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">native</span> <span class="function">String <span class="title">getStringFromNative</span><span class="params">()</span></span>;
+</code></pre><p>然后<code>Build - Make Project</code><br>之后可以在<code>FFmpegDemo\app\build\intermediates\classes\debug\com\example\l1\ffmpegdemo</code>下看到class中间文件</p>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>生成头文件（.h）<br>在Android Studio的Terminal中进入项目main目录，并运行下面命令以生成头文件：</p>
+<pre><code>javah -d jni -classpath E:<span class="command">\Android</span><span class="command">\AndroidStudioSDK</span><span class="command">\platforms</span><span class="command">\android</span>-19<span class="command">\android</span>.jar;‪‪
+E:<span class="command">\Android</span><span class="command">\AndroidStudioSDK</span><span class="command">\extras</span><span class="command">\android</span><span class="command">\support</span><span class="command">\v</span>4<span class="command">\android</span>-support-v4.jar;
+E:<span class="command">\Android</span><span class="command">\AndroidStudioSDK</span><span class="command">\extras</span><span class="command">\android</span><span class="command">\support</span><span class="command">\v</span>7<span class="command">\appcompat</span><span class="command">\libs</span><span class="command">\android</span>-support-v4.jar;
+E:<span class="command">\Android</span><span class="command">\AndroidStudioSDK</span><span class="command">\extras</span><span class="command">\android</span><span class="command">\support</span><span class="command">\v</span>7<span class="command">\appcompat</span><span class="command">\libs</span><span class="command">\android</span>-support-v7-appcompat.jar;
+..<span class="command">\.</span>.<span class="command">\build</span><span class="command">\intermediates</span><span class="command">\classes</span><span class="command">\debug</span> com.example.l1.ffmpegdemo.MainActivity
+</code></pre></li>
+</ol>
+<pre><code>![](https:<span class="regexp">//raw</span>.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/<span class="variable">%E4</span><span class="variable">%BD</span><span class="variable">%BF</span><span class="variable">%E7</span><span class="variable">%94</span><span class="variable">%A8NDK3</span>.png)  
+</code></pre><p><code>-d</code>：表示新建目录<br><code>-classpath</code>：指定类路径<br>我这边如果不指定类路径会出现错误：</p>
+<pre><code>错误: 无法访问android<span class="class">.support</span><span class="class">.v7</span><span class="class">.app</span><span class="class">.AppCompatActivity</span> 
+找不到android<span class="class">.support</span><span class="class">.v7</span><span class="class">.app</span><span class="class">.AppCompatActivity</span>的类文件
+</code></pre><p>运行完命令后，将会多一个jni目录，并且里面有个头文件（.h）<br><img src="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK4.png" alt=""></p>
+<ol>
+<li><p>实现头文件中声明的方法<br>在jni目录下新建一个<code>.c文件</code>，用以实现<code>.h头文件</code>中的声明方法。这里命名为<code>main.c</code>,并简单的返回字符串。</p>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> "com_example_l1_ffmpegdemo_MainActivity.h"</span>
+
+<span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_com_example_l1_ffmpegdemo_MainActivity_getStringFromNative</span><span class="params">(JNIEnv *env, jobject obj)</span>
+</span>{
+      <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env,<span class="string">"Hello JNI"</span>);
+}
+</code></pre></li>
+</ol>
+<ol>
+<li><p>配置NDK路径和指定动态库名称<br> <img src="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK5.png" alt=""><br>在<code>local.properties</code>增加NDK路径，文件变成：</p>
+<pre><code>sdk.dir=E<span class="command">\:</span><span class="command">\\</span>Android<span class="command">\\</span>AndroidStudioSDK
+ndk.dir=E<span class="command">\:</span><span class="command">\\</span>Android<span class="command">\\</span>android-ndk-r10e
+</code></pre><p>此外，还要在<code>gradle.properties</code>文件中加入：</p>
+<pre><code>android.<span class="variable">useDeprecatedNdk=</span><span class="constant">true</span>
+</code></pre><p>否则会报错：</p>
+<pre><code>Error:Execution failed <span class="keyword">for</span> task <span class="string">':app:compileDebugNdk'</span>.
+&gt; Error: NDK integration is deprecated <span class="operator">in</span> <span class="operator">the</span> current plugin.  Consider trying <span class="operator">the</span> <span class="built_in">new</span> experimental plugin.  For details, see <span class="keyword">http</span>://tools.android.com/tech-docs/<span class="built_in">new</span>-build-<span class="keyword">system</span>/gradle-experimental.  Set <span class="string">"android.useDeprecatedNdk=true"</span> <span class="operator">in</span> gradle.properties <span class="built_in">to</span> continue <span class="keyword">using</span> <span class="operator">the</span> current NDK integration.
+</code></pre><p>点击<code>Build - Make Project</code>可以在<code>FFmpegDemo\app\build\intermediates\ndk\debug\lib\armeabi</code>下看到<code>libapp.so</code>文件，这是默认的动态库名称，我们可以在<code>build.gradle（Module：app）</code>文件里指定动态库名称：</p>
+<pre><code>android {
+    <span class="keyword">...</span>
+    defaultConfig {
+        <span class="keyword">...</span>
+        ndk {
+            moduleName <span class="string">"MyLib"</span>  //指定生成动态库的名称
+        }
+    }
+    <span class="keyword">...</span>
+}
+</code></pre><p>重新编译即可看到<code>libapp.so</code>变成了<code>libMyLib.so</code><br><img src="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK6.png" alt=""></p>
+</li>
+<li><p>使用native方法<br>最后在<code>MainActivity</code>中增加动态库载入代码就可以调用<code>native</code>方法啦~</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
+
+    <span class="comment">//载入动态库</span>
+    static {
+        <span class="type">System</span>.loadLibrary(<span class="string">"MyLib"</span>);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(<span class="type">R</span>.layout.activity_main);
+
+        <span class="type">TextView</span> tv = (<span class="type">TextView</span>) findViewById(<span class="type">R</span>.id.my_tv);
+        tv.setText(getStringFromNative());  <span class="comment">//调用native方法</span>
+    }
+
+    <span class="comment">//声明native方法</span>
+    public native <span class="type">String</span> getStringFromNative();
+}
+</code></pre><p>编译运行就可以在屏幕上看到<code>Hello JNI</code>啦~~<br><img src="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK1.jpg" alt=""></p>
+</li>
+</ol>
+<h2 id="C语言中输出Logcat？没问题！">C语言中输出Logcat？没问题！</h2><p>要想在C语言实现代码中输出Logcat信息，其实很简单！！<br>首先，在<code>main.c</code>中包含<code>#include &lt;android/log.h&gt;</code>，然后调用<code>__android_log_print()</code>打印输出。</p>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> "com_example_l1_ffmpegdemo_MainActivity.h"</span>
+<span class="preprocessor">#<span class="keyword">include</span> &lt;android/log.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">define</span> TAG "JNI_TAG"</span>
+<span class="comment">//为了方便调用，将输出宏定义</span>
+<span class="preprocessor">#<span class="keyword">define</span> LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG, TAG, __VA_ARGS__)</span>
+
+<span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_com_example_l1_ffmpegdemo_MainActivity_getStringFromNative</span><span class="params">(JNIEnv *env, jobject obj)</span>
+</span>{
+  <span class="comment">//输出Logcat</span>
+  LOGD(<span class="string">"Logcat text"</span>);
+  <span class="comment">//或像C语言printf()一样</span>
+  LOGD(<span class="string">"%s You are No.%d"</span>,<span class="string">"Logcat so easy!"</span>, <span class="number">1</span>);
+  <span class="keyword">return</span> (*env)-&gt;NewStringUTF(env,<span class="string">"Hello JNI"</span>);
+}
+</code></pre><p>然后，在<code>build.gradle</code>中增加链接库。</p>
+<pre><code>android {
+    <span class="keyword">...</span>
+    defaultConfig {
+        <span class="keyword">...</span>
+        ndk {
+            moduleName <span class="string">"MyLib"</span>  //指定生成动态库的名称
+            ldLibs <span class="string">"log"</span>        //增加链接库
+        }
+    }
+    <span class="keyword">...</span>
+}
+</code></pre><p>重新编译就可以在Logcat窗口看到输出啦~<br><img src="https://raw.githubusercontent.com/Getnway/getnway.github.io/master/MarkdownPic/%E4%BD%BF%E7%94%A8NDK7.png" alt=""></p>
+<p>参考：<br><a href="https://software.intel.com/en-us/videos/using-the-ndk-with-android-studio" target="_blank" rel="external">Using the NDK with Android* Studio</a><br><a href="http://stackoverflow.com/questions/10274920/how-to-get-printf-messages-written-in-ndk-application" target="_blank" rel="external">How to get “printf” messages written in NDK application?</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/13/Android Studio中使用FFmpeg动态库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Android Studio使用FFmpeg动态库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/04/Makefile基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Makefile基础</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android Studio中使用NDK" data-title="Android Studio中使用NDK" data-url="/2015/12/07/Android Studio中使用NDK/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
