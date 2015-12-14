@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RxJava操作符学习 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="操作符学习推荐阅读：官方英文  翻译中文  
+在学习操作符之前先看subscribe()先来看一个简单的例子  
+//被观察者
+Observable.OnSubscribe&amp;lt;Integer&amp;gt; integerOnSubscribe = new Observable.OnSubscribe&amp;lt;Integer&amp;gt;() {
+    @Override
+    public void c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxJava操作符学习">
+<meta property="og:url" content="/2015/10/28/RxJava操作符学习/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="操作符学习推荐阅读：官方英文  翻译中文  
+在学习操作符之前先看subscribe()先来看一个简单的例子  
+//被观察者
+Observable.OnSubscribe&amp;lt;Integer&amp;gt; integerOnSubscribe = new Observable.OnSubscribe&amp;lt;Integer&amp;gt;() {
+    @Override
+    public void c">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RxJava操作符学习">
+<meta name="twitter:description" content="操作符学习推荐阅读：官方英文  翻译中文  
+在学习操作符之前先看subscribe()先来看一个简单的例子  
+//被观察者
+Observable.OnSubscribe&amp;lt;Integer&amp;gt; integerOnSubscribe = new Observable.OnSubscribe&amp;lt;Integer&amp;gt;() {
+    @Override
+    public void c">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 18px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective/" style="font-size: 14px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 14px;">FFmpeg</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JNI/" style="font-size: 12px;">JNI</a><a href="/tags/Java/" style="font-size: 14px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 18px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 10px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 16px;">Qt</a><a href="/tags/RxJava/" style="font-size: 12px;">RxJava</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 12px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 12px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-RxJava操作符学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/28/RxJava操作符学习/" class="article-date">
+  	<time datetime="2015-10-28T13:59:22.000Z" itemprop="datePublished">Oct-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RxJava操作符学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJava/">RxJava</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作符/">操作符</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>操作符学习推荐阅读：<a href="http://reactivex.io/documentation/operators.html" target="_blank" rel="external">官方英文</a>  <a href="http://blog.csdn.net/job_hesc/article/details/46242117" target="_blank" rel="external">翻译中文</a>  </p>
+<h3 id="在学习操作符之前先看subscribe()">在学习操作符之前先看subscribe()</h3><p>先来看一个简单的例子  </p>
+<pre><code><span class="comment">//被观察者</span>
+Observable.OnSubscribe&lt;Integer&gt; integerOnSubscribe = <span class="keyword">new</span> Observable.OnSubscribe&lt;Integer&gt;() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">call</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> Integer&gt; subscriber)</span> </span>{
+        subscriber.onNext(<span class="number">1</span>);
+        subscriber.onNext(<span class="number">2</span>);
+        subscriber.onNext(<span class="number">3</span>);
+        subscriber.onCompleted();
+    }
+};
+
+<span class="comment">//观察者</span>
+Subscriber&lt;Integer&gt; integerSubscriber = <span class="keyword">new</span> Subscriber&lt;Integer&gt;() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"onCompleted"</span>);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>{}
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onNext</span><span class="params">(Integer i)</span> </span>{ System.out.println(i); }
+};
+
+<span class="comment">//订阅</span>
+Observable.create(integerOnSubscribe)
+        .subscribe(integerSubscriber);
+</code></pre><a id="more"></a>  
+<p>执行上面的例子，将看到以下结果：</p>
+<pre><code>1
+2
+3
+onCompleted
+</code></pre><p>那么在这过程中发生了什么呢？一起到源码里看看！<br>先来看看<code>create（）</code>，在<code>Observable</code>类中，有这样的定义：  </p>
+<pre><code><span class="keyword">final</span> OnSubscribe&lt;T&gt; onSubscribe;
+
+<span class="function"><span class="keyword">protected</span> <span class="title">Observable</span><span class="params">(OnSubscribe&lt;T&gt; f)</span> </span>{
+    <span class="keyword">this</span>.onSubscribe = f;
+}
+
+<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">create</span><span class="params">(OnSubscribe&lt;T&gt; f)</span> </span>{
+    <span class="keyword">return</span> <span class="keyword">new</span> Observable&lt;T&gt;(f);
+}  
+</code></pre><p>也就是说，上面的例子中，我们的<code>integerOnSubscribe</code>对象被<code>onSubscribe</code>变量引用了。<br>接着来再看与<code>subscribe()</code>有关的关键的代码：  </p>
+<pre><code><span class="keyword">public</span> <span class="keyword">final</span> <span class="function">Subscription <span class="title">subscribe</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> T&gt; subscriber)</span> </span>{
+    <span class="comment">//this - 即当前对象传递给下面的函数，主要使用this.onSubscriber引用</span>
+    <span class="function"><span class="keyword">return</span> Observable.<span class="title">subscribe</span><span class="params">(subscriber, <span class="keyword">this</span>)</span></span>;    
+}
+
+<span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Subscription <span class="title">subscribe</span><span class="params">(Subscriber&lt;? <span class="keyword">super</span> T&gt; subscriber, Observable&lt;T&gt; observable)</span> </span>{
+    <span class="comment">//删除了大部分代码，只保留关键代码，并且假设执行过程没有异常抛出</span>
+    observable.onSubscribe.call(subscriber);
+    <span class="keyword">return</span> subscriber;
+}
+</code></pre><p>注意最关键的代码<code>observable.onSubscribe.call(subscriber)</code>，这里的<code>observable.onSubscribe</code>也就是我们的<code>integerOnSubscribe</code>对象引用，而<code>subscriber</code>就是我们传入<code>subscribe()</code>的<code>integerSubscriber</code>对象。所以这句代码的中变量替换为上面例子的对象就变为：  </p>
+<pre><code><span class="built_in">integer</span>OnSubscribe.call(<span class="built_in">integer</span>Subscriber);
+</code></pre><p>也就是说在<code>integerOnSubscribe.call()</code>中执行了  </p>
+<pre><code><span class="built_in">integer</span>Subscriber.onNext(<span class="number">1</span>);
+<span class="built_in">integer</span>Subscriber.onNext(<span class="number">2</span>);
+<span class="built_in">integer</span>Subscriber.onNext(<span class="number">3</span>);
+<span class="built_in">integer</span>Subscriber.onCompleted();
+</code></pre><p>因此，我们的程序也就依次输出了</p>
+<pre><code>1
+2
+3
+onCompleted
+</code></pre><p>总结一下整个过程就是：有一个被观察者<code>integerSubscriber</code>和一个观察者<code>integerSubscriber</code>，使用<code>subscribe()</code>使他们产生订阅关系，<code>subscribe()</code>所做的事情就是，将观察者传递给被观察者的<code>call()</code>,并在<code>call()</code>中执行观察者的<code>onNext()</code>和<code>onCompleted()</code>。</p>
+<pre><code><span class="built_in">integer</span>Subscriber.call(<span class="built_in">integer</span>Subscriber);
+</code></pre><h3 id="以操作符为参数lift()">以操作符为参数lift()</h3><p>由于<code>lift()</code>接受一个<code>操作符</code>参数，所以我们这里使用<code>map()</code>来讲<code>lift()</code>,也可以随便了解<code>map()</code>,假设代码是这样的：</p>
+<pre><code>Observable<span class="built_in">.</span>OnSubscribe<span class="subst">&lt;</span><span class="built_in">Integer</span><span class="subst">&gt;</span> myOnSubscribe <span class="subst">=</span> <span class="literal">new</span> Observable<span class="built_in">.</span>OnSubscribe<span class="subst">&lt;</span><span class="built_in">Integer</span><span class="subst">&gt;</span>() {
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> call(Subscriber<span class="subst">&lt;?</span> super <span class="built_in">Integer</span><span class="subst">&gt;</span> subscriber) {
+        subscriber<span class="built_in">.</span>onNext(<span class="number">1</span>);
+    }
+};
+Subscriber<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> mySubscriber <span class="subst">=</span> <span class="literal">new</span> Subscriber<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>() {
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> onNext(<span class="built_in">String</span> s) {
+        System<span class="built_in">.</span>out<span class="built_in">.</span>print(s);
+    }
+};
+Func1<span class="subst">&lt;</span><span class="built_in">Integer</span>, <span class="built_in">String</span><span class="subst">&gt;</span> myFunc <span class="subst">=</span> <span class="literal">new</span> Func1<span class="subst">&lt;</span><span class="built_in">Integer</span>, <span class="built_in">String</span><span class="subst">&gt;</span>() {
+    @Override
+    <span class="keyword">public</span> <span class="built_in">String</span> call(<span class="built_in">Integer</span> i) {
+        <span class="keyword">return</span> i <span class="subst">+</span> <span class="string">" programmer"</span>;
+    }
+};
+
+Observable<span class="built_in">.</span>create(myOnSubscribe)
+        <span class="built_in">.</span><span class="built_in">map</span>(myFunc)
+        <span class="built_in">.</span>subscribe(mySubscriber);
+</code></pre><p>这里只看<code>.map(myFunc)</code>这一句代码，其他部分分析可以查看开头的例子。先看看<code>map()</code>的源码：</p>
+<pre><code>public final &lt;<span class="type">R</span>&gt; <span class="type">Observable</span>&lt;<span class="type">R</span>&gt; <span class="built_in">map</span>(<span class="type">Func1</span>&lt;? <span class="keyword">super</span> <span class="type">T</span>, ? extends <span class="type">R</span>&gt; <span class="func"><span class="keyword">func</span>) </span>{
+    <span class="keyword">return</span> lift(<span class="keyword">new</span> <span class="type">OperatorMap</span>&lt;<span class="type">T</span>, <span class="type">R</span>&gt;(<span class="func"><span class="keyword">func</span>));
+}</span>
+</code></pre><p>出现了<code>lift()</code>,进入看看：</p>
+<pre><code><span class="comment">//经过删减和修改的代码</span>
+<span class="keyword">public</span> <span class="keyword">final</span> &lt;R&gt; Observable&lt;R&gt; lift(<span class="keyword">final</span> Operator&lt;? <span class="keyword">extends</span> R, ? <span class="keyword">super</span> T&gt; operator) {
+    Observable.OnSubscribe&lt;String&gt; onSub = <span class="keyword">new</span> OnSubscribe&lt;R&gt;() {
+        @Override
+        <span class="keyword">public</span> <span class="keyword">void</span> <span class="keyword">call</span>(Subscriber&lt;? <span class="keyword">super</span> R&gt; o) {
+            Subscriber&lt;? <span class="keyword">super</span> T&gt; st = operator.<span class="keyword">call</span>(o);
+                st.onStart();
+                onSubscribe.<span class="keyword">call</span>(st);
+        }
+    }
+    <span class="comment">//总是返回新被观察者对象</span>
+    <span class="keyword">return</span> <span class="keyword">new</span> Observable&lt;R&gt;(onSub);
+}
+</code></pre><p>可以看到，<code>lift()</code>总是创建一个新的<code>被观察者</code>。在看看<code>new OperatorMap&lt;T, R&gt;(func)</code>干了什么：</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">OperatorMap</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; <span class="keyword">implements</span> <span class="title">Operator</span>&lt;<span class="title">R</span>, <span class="title">T</span>&gt; </span>{
+    <span class="comment">//转换操作函数</span>
+    <span class="keyword">private</span> <span class="keyword">final</span> Func1&lt;? <span class="keyword">super</span> T, ? <span class="keyword">extends</span> R&gt; transformer;
+    <span class="comment">//构造函数</span>
+    <span class="function"><span class="keyword">public</span> <span class="title">OperatorMap</span><span class="params">(Func1&lt;? <span class="keyword">super</span> T, ? <span class="keyword">extends</span> R&gt; transformer)</span> </span>{
+        <span class="keyword">this</span>.transformer = transformer;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> Subscriber&lt;? <span class="keyword">super</span> T&gt; call(<span class="keyword">final</span> Subscriber&lt;? <span class="keyword">super</span> R&gt; o) {
+        <span class="keyword">return</span> <span class="keyword">new</span> Subscriber&lt;T&gt;(o) {
+            <span class="annotation">@Override</span>
+            <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span> </span>{
+                o.onNext(transformer.call(t));
+            }
+        };
+    }
+}
+</code></pre><p>换成上面例子的变量，则<code>lift()</code>中</p>
+<pre><code>Observable<span class="built_in">.</span>OnSubscribe<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> onSub <span class="subst">=</span> <span class="literal">new</span> OnSubscribe<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>(){
+    @Override
+    <span class="keyword">public</span> <span class="literal">void</span> call(Subscriber<span class="subst">&lt;?</span> super <span class="built_in">String</span><span class="subst">&gt;</span> o) {
+        Subscriber<span class="subst">&lt;</span><span class="built_in">Integer</span><span class="subst">&gt;</span> st <span class="subst">=</span> <span class="literal">new</span> OperatorMap<span class="subst">&lt;</span><span class="built_in">Integer</span>,<span class="built_in">String</span><span class="subst">&gt;</span>(myFunc)<span class="built_in">.</span>call(o);
+                               <span class="subst">=</span> <span class="literal">new</span> Subscriber<span class="subst">&lt;</span><span class="built_in">Integer</span><span class="subst">&gt;</span>(Subscriber<span class="subst">&lt;?</span> super <span class="built_in">String</span><span class="subst">&gt;</span> o){
+                                    onNext(<span class="built_in">Integer</span> t){
+                                        o<span class="built_in">.</span>onNext(myFunc<span class="built_in">.</span>call(t));
+                                    }
+                                }
+        onSubscribe<span class="built_in">.</span>call(st);   <span class="subst">&lt;===</span>    myOnSubscribe<span class="built_in">.</span>call(st)
+    }
+}
+</code></pre><p>订阅时：    </p>
+<pre><code>Observable<span class="built_in">.</span>create(myOnSubscribe)
+
+        <span class="built_in">.</span><span class="built_in">map</span>(myFunc)  <span class="subst">&lt;===</span>  <span class="keyword">return</span> <span class="literal">new</span> Observable<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>(onSub)
+
+        <span class="built_in">.</span>subscribe(mySubscriber);  <span class="subst">&lt;===</span>   onSub<span class="built_in">.</span>call(mySubscriber)
+</code></pre><p>所以运行流程为：</p>
+<pre><code><span class="comment">//本例中t=1    </span>
+myOnSubscribe.<span class="function"><span class="title">call</span><span class="params">(st)</span></span> -&gt; st.<span class="function"><span class="title">onNext</span><span class="params">(t)</span></span> -&gt; mySubscriber.<span class="function"><span class="title">onNext</span><span class="params">(myFunc.call(t)</span></span>)
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/30/RxJava初步了解和在Android中的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          RxJava初步了解和在Android中的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/03/Shell编程基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Shell编程基础</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="RxJava操作符学习" data-title="RxJava操作符学习" data-url="/2015/10/28/RxJava操作符学习/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
