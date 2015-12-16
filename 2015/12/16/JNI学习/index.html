@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JNI学习 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JNI学习JNI数据类型
+JNI类型
+ |JNI     |意义               | |:———:|:————————-:| |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions| |jobject |reference to “this” Java object|
+
+基本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JNI学习">
+<meta property="og:url" content="/2015/12/16/JNI学习/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="JNI学习JNI数据类型
+JNI类型
+ |JNI     |意义               | |:———:|:————————-:| |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions| |jobject |reference to “this” Java object|
+
+基本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JNI学习">
+<meta name="twitter:description" content="JNI学习JNI数据类型
+JNI类型
+ |JNI     |意义               | |:———:|:————————-:| |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions| |jobject |reference to “this” Java object|
+
+基本">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 18px;">Android</a><a href="/tags/C/" style="font-size: 20px;">C++</a><a href="/tags/Effective/" style="font-size: 14px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 14px;">FFmpeg</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JNI/" style="font-size: 14px;">JNI</a><a href="/tags/Java/" style="font-size: 16px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 18px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 10px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 16px;">Qt</a><a href="/tags/RxJava/" style="font-size: 12px;">RxJava</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 12px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 12px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-JNI学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/16/JNI学习/" class="article-date">
+  	<time datetime="2015-12-16T06:28:36.000Z" itemprop="datePublished">Dec-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JNI学习
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JNI/">JNI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JNI学习">JNI学习</h1><h2 id="JNI数据类型">JNI数据类型</h2><ol>
+<li><p>JNI类型</p>
+<p> |JNI     |意义               |<br> |:———:|:————————-:|<br> |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions|<br> |jobject |reference to “this” Java object|</p>
+</li>
+<li><p>基本数据类型（可直接在C语言中使用）</p>
+<p> |JNI     |Java   |<br> |:———:|:——-:|<br> |jint    |int    |<br> |jbyte   |byte   |<br> |jshort  |short  |<br> |jlong   |long   |<br> |jfloat  |float  |<br> |jdouble |double |<br> |jchar   |char   |<br> |jboolean|boolean|</p>
+</li>
+</ol>
+<a id="more"></a>
+<pre><code>**注意：jint对应的是C中的<span class="keyword">long</span>**  
+
+    <span class="comment">// In "win\jni_mh.h" - machine header which is machine dependent</span>
+    <span class="keyword">typedef</span> <span class="keyword">long</span>            jint;
+    <span class="keyword">typedef</span> __int64         jlong;
+    <span class="keyword">typedef</span> <span class="keyword">signed</span> <span class="keyword">char</span>     jbyte;
+
+    <span class="comment">// In "jni.h"</span>
+    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>   jboolean;
+    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">short</span>  jchar;
+    <span class="keyword">typedef</span> <span class="keyword">short</span>           jshort;
+    <span class="keyword">typedef</span> <span class="keyword">float</span>           jfloat;
+    <span class="keyword">typedef</span> <span class="keyword">double</span>          jdouble;
+    <span class="keyword">typedef</span> jint            jsize;
+</code></pre><ol>
+<li><p>Java类型</p>
+<p> |JNI       |Java               |<br> |:————:|:————————-:|<br> |jclass    |java.lang.Class    |<br> |jstring   |java.lang.String   |<br> |jthrowable|java.lang.Throwable|<br> |jarray|八大基本数据类型数组和jobjectArray|</p>
+</li>
+</ol>
+<h2 id="JNI函数">JNI函数</h2><ol>
+<li><p>jstring与char* 转换函数 </p>
+<pre><code><span class="comment">// UTF-8 String (encoded to 1-3 byte, backward compatible with 7-bit ASCII)</span>
+<span class="comment">// Can be mapped to null-terminated char-array C-string</span>
+<span class="keyword">const</span> <span class="keyword">char</span> * GetStringUTFChars(JNIEnv *env, jstring <span class="built_in">string</span>, jboolean *isCopy);
+   <span class="comment">// Returns a pointer to an array of bytes representing the string in modified UTF-8 encoding.</span>
+<span class="function"><span class="keyword">void</span> <span class="title">ReleaseStringUTFChars</span><span class="params">(JNIEnv *env, jstring <span class="built_in">string</span>, <span class="keyword">const</span> <span class="keyword">char</span> *utf)</span></span>;
+   <span class="comment">// Informs the VM that the native code no longer needs access to utf.</span>
+<span class="function">jstring <span class="title">NewStringUTF</span><span class="params">(JNIEnv *env, <span class="keyword">const</span> <span class="keyword">char</span> *bytes)</span></span>;
+   <span class="comment">// Constructs a new java.lang.String object from an array of characters in modified UTF-8 encoding.</span>
+<span class="function">jsize <span class="title">GetStringUTFLength</span><span class="params">(JNIEnv *env, jstring <span class="built_in">string</span>)</span></span>;
+   <span class="comment">// Returns the length in bytes of the modified UTF-8 representation of a string.</span>
+<span class="function"><span class="keyword">void</span> <span class="title">GetStringUTFRegion</span><span class="params">(JNIEnv *env, jstring str, jsize start, jsize length, <span class="keyword">char</span> *buf)</span></span>;
+   <span class="comment">// Translates len number of Unicode characters beginning at offset start into modified UTF-8 encoding </span>
+   <span class="comment">// and place the result in the given buffer buf.</span>
+
+<span class="comment">// Unicode Strings (16-bit character)</span>
+<span class="keyword">const</span> jchar * GetStringChars(JNIEnv *env, jstring <span class="built_in">string</span>, jboolean *isCopy);
+   <span class="comment">// Returns a pointer to the array of Unicode characters</span>
+<span class="function"><span class="keyword">void</span> <span class="title">ReleaseStringChars</span><span class="params">(JNIEnv *env, jstring <span class="built_in">string</span>, <span class="keyword">const</span> jchar *chars)</span></span>;
+   <span class="comment">// Informs the VM that the native code no longer needs access to chars.</span>
+<span class="function">jstring <span class="title">NewString</span><span class="params">(JNIEnv *env, <span class="keyword">const</span> jchar *unicodeChars, jsize length)</span></span>;
+   <span class="comment">// Constructs a new java.lang.String object from an array of Unicode characters.</span>
+<span class="function">jsize <span class="title">GetStringLength</span><span class="params">(JNIEnv *env, jstring <span class="built_in">string</span>)</span></span>;
+   <span class="comment">// Returns the length (the count of Unicode characters) of a Java string.</span>
+<span class="function"><span class="keyword">void</span> <span class="title">GetStringRegion</span><span class="params">(JNIEnv *env, jstring str, jsize start, jsize length, jchar *buf)</span></span>;
+   <span class="comment">// Copies len number of Unicode characters beginning at offset start to the given buffer buf</span>
+</code></pre><p> 注意：<code>GetStringCritical()</code>和<code>ReleaseStringCritical()</code>之间不能调用阻塞代码（IO操作或其他）。</p>
+</li>
+<li><p>基本数据类型数组转换函数</p>
+<pre><code>// ArrayType: jintArray, jbyteArray, jshortArray, jlongArray, jfloatArray, jdoubleArray, jcharArray, jbooleanArray
+// PrimitiveType: int, byte, short, long, float, double, char, boolean
+// NativeType: jint, jbyte, jshort, jlong, jfloat, jdouble, jchar, jboolean
+NativeType <span class="keyword">*</span> Get<span class="variable">&lt;PrimitiveType&gt;</span>ArrayElements(JNIEnv <span class="keyword">*</span>env, ArrayType array, jboolean <span class="keyword">*</span>isCopy);
+void Release<span class="variable">&lt;PrimitiveType&gt;</span>ArrayElements(JNIEnv <span class="keyword">*</span>env, ArrayType array, NativeType <span class="keyword">*</span>elems, jint mode);
+void Get<span class="variable">&lt;PrimitiveType&gt;</span>ArrayRegion(JNIEnv <span class="keyword">*</span>env, ArrayType array, jsize start, jsize length, NativeType <span class="keyword">*</span>buffer);
+void Set<span class="variable">&lt;PrimitiveType&gt;</span>ArrayRegion(JNIEnv <span class="keyword">*</span>env, ArrayType array, jsize start, jsize length, const NativeType <span class="keyword">*</span>buffer);
+ArrayType New<span class="variable">&lt;PrimitiveType&gt;</span>Array(JNIEnv <span class="keyword">*</span>env, jsize length);
+void <span class="keyword">*</span> GetPrimitiveArrayCritical(JNIEnv <span class="keyword">*</span>env, jarray array, jboolean <span class="keyword">*</span>isCopy);
+void ReleasePrimitiveArrayCritical(JNIEnv <span class="keyword">*</span>env, jarray array, void <span class="keyword">*</span>carray, jint mode);
+</code></pre><p> 注意：<code>Get|ReleasePrimitiveArrayCritical()</code>之间不能调用阻塞代码（IO操作或其他）。</p>
+</li>
+<li><p>jobject操作函数</p>
+<pre><code><span class="comment">//根据jobject获取jclass</span>
+jclass GetObjectClass(JNIEnv *env, jobject obj);
+    <span class="comment">// Returns the class of an object.</span>
+
+<span class="comment">//普通变量</span>
+<span class="comment">//步骤：获取jclass =&gt; 获取变量ID =&gt; 根据变量ID操作变量(Get/Set)</span>
+jfieldID GetFieldID(JNIEnv *env, jclass cls, <span class="keyword">const</span> char *name, <span class="keyword">const</span> char *sig);
+  <span class="comment">// Returns the field ID for an instance variable of a class.</span>
+
+NativeType Get&lt;<span class="keyword">type</span>&gt;Field(JNIEnv *env, jobject obj, jfieldID fieldID);
+void <span class="keyword">Set</span>&lt;<span class="keyword">type</span>&gt;Field(JNIEnv *env, jobject obj, jfieldID fieldID, NativeType value);
+  <span class="comment">// Get/Set the value of an instance variable of an object</span>
+  <span class="comment">// &lt;type&gt; includes each of the eight primitive types plus Object.</span>
+
+<span class="comment">//静态变量</span>
+<span class="comment">//步骤：获取jclass =&gt; 获取静态变量ID =&gt; 根据静态变量ID操作静态变量(Get/Set)</span>
+jfieldID GetStaticFieldID(JNIEnv *env, jclass cls, <span class="keyword">const</span> char *name, <span class="keyword">const</span> char *sig);
+  <span class="comment">// Returns the field ID for a static variable of a class.</span>
+
+NativeType GetStatic&lt;<span class="keyword">type</span>&gt;Field(JNIEnv *env, jclass clazz, jfieldID fieldID);
+void SetStatic&lt;<span class="keyword">type</span>&gt;Field(JNIEnv *env, jclass clazz, jfieldID fieldID, NativeType value);
+  <span class="comment">// Get/Set the value of a static variable of a class.</span>
+  <span class="comment">// &lt;type&gt; includes each of the eight primitive types plus Object.</span>
+
+<span class="comment">//回调Java函数</span>
+<span class="comment">//步骤：获取jclass =&gt; 获取函数ID =&gt; 根据函数ID调用函数</span>
+jmethodID GetMethodID(JNIEnv *env, jclass cls, <span class="keyword">const</span> char *name, <span class="keyword">const</span> char *sig);
+   <span class="comment">// Returns the method ID for an instance method of a class or interface.</span>
+
+NativeType Call&lt;<span class="keyword">type</span>&gt;<span class="function"><span class="keyword">Method</span><span class="params">(JNIEnv *env, jobject obj, jmethodID methodID, ...)</span>;</span>
+NativeType Call&lt;<span class="keyword">type</span>&gt;MethodA(JNIEnv *env, jobject obj, jmethodID methodID, <span class="keyword">const</span> jvalue *args);
+NativeType Call&lt;<span class="keyword">type</span>&gt;MethodV(JNIEnv *env, jobject obj, jmethodID methodID, va_list args);
+   <span class="comment">// Invoke an instance method of the object.</span>
+   <span class="comment">// The &lt;type&gt; includes each of the eight primitive and Object.</span>
+
+jmethodID GetStaticMethodID(JNIEnv *env, jclass cls, <span class="keyword">const</span> char *name, <span class="keyword">const</span> char *sig);
+   <span class="comment">// Returns the method ID for an instance method of a class or interface.</span>
+
+NativeType CallStatic&lt;<span class="keyword">type</span>&gt;<span class="function"><span class="keyword">Method</span><span class="params">(JNIEnv *env, jclass clazz, jmethodID methodID, ...)</span>;</span>
+NativeType CallStatic&lt;<span class="keyword">type</span>&gt;MethodA(JNIEnv *env, jclass clazz, jmethodID methodID, <span class="keyword">const</span> jvalue *args);
+NativeType CallStatic&lt;<span class="keyword">type</span>&gt;MethodV(JNIEnv *env, jclass clazz, jmethodID methodID, va_list args);
+   <span class="comment">// Invoke an instance method of the object.</span>
+   <span class="comment">// The &lt;type&gt; includes each of the eight primitive and Object.</span>
+
+<span class="comment">//调用重写方法</span>
+<span class="comment">//步骤：获取jclass =&gt; 获取函数ID =&gt; 根据函数ID调用函数</span>
+NativeType CallNonvirtual&lt;<span class="keyword">type</span>&gt;<span class="function"><span class="keyword">Method</span><span class="params">(JNIEnv *env, jobject obj, jclass cls, jmethodID methodID, ...)</span>;</span>
+NativeType CallNonvirtual&lt;<span class="keyword">type</span>&gt;MethodA(JNIEnv *env, jobject obj, jclass cls, jmethodID methodID, <span class="keyword">const</span> jvalue *args);
+NativeType CallNonvirtual&lt;<span class="keyword">type</span>&gt;MethodV(JNIEnv *env, jobject obj, jclass cls, jmethodID methodID, va_list args);
+</code></pre></li>
+</ol>
+<h3 id="新建对象和对象数组">新建对象和对象数组</h3><ol>
+<li><p>回调构造函数创建对象的函数</p>
+<pre><code>//查找<span class="type">Java</span> <span class="type">Class</span>（<span class="type">Integer</span>、<span class="type">Double</span>等）
+jclass <span class="type">FindClass</span>(<span class="type">JNIEnv</span> *env, <span class="keyword">const</span> <span class="type">char</span> *name);
+
+//步骤：查找<span class="type">Class</span> =&gt; 获取类构造函数<span class="type">ID</span> =&gt; 新建对象
+jobject <span class="type">NewObject</span>(<span class="type">JNIEnv</span> *env, jclass cls, jmethodID methodID, ...);
+jobject <span class="type">NewObjectA</span>(<span class="type">JNIEnv</span> *env, jclass cls, jmethodID methodID, <span class="keyword">const</span> jvalue *args);
+jobject <span class="type">NewObjectV</span>(<span class="type">JNIEnv</span> *env, jclass cls, jmethodID methodID, va_list args);
+   // <span class="type">Constructs</span> a new <span class="type">Java</span> <span class="keyword">object</span>. <span class="type">The</span> <span class="keyword">method</span> <span class="type">ID</span> indicates which constructor <span class="keyword">method</span> to invoke
+
+jobject <span class="type">AllocObject</span>(<span class="type">JNIEnv</span> *env, jclass cls);
+  // <span class="type">Allocates</span> a new <span class="type">Java</span> <span class="keyword">object</span> <span class="keyword">without</span> invoking <span class="type">any</span> <span class="keyword">of</span> the constructors <span class="keyword">for</span> the <span class="keyword">object</span>.
+</code></pre></li>
+<li><p>构造对象数组的函数</p>
+<pre><code><span class="comment">//步骤：查找Class =&gt; 根据类类型分配数组空间 =&gt; 调用构造函数构建类 =&gt; 将构建的单个类放入分配的数组</span>
+<span class="function">jobjectArray <span class="title">NewObjectArray</span><span class="params">(JNIEnv *env, jsize length, jclass elementClass, jobject initialElement)</span></span>;
+<span class="comment">// Constructs a new array holding objects in class elementClass.</span>
+<span class="comment">// All elements are initially set to initialElement.</span>
+
+<span class="function">jobject <span class="title">GetObjectArrayElement</span><span class="params">(JNIEnv *env, jobjectArray <span class="built_in">array</span>, jsize index)</span></span>;
+   <span class="comment">// Returns an element of an Object array.</span>
+
+<span class="function"><span class="keyword">void</span> <span class="title">SetObjectArrayElement</span><span class="params">(JNIEnv *env, jobjectArray <span class="built_in">array</span>, jsize index, jobject value)</span></span>;
+   <span class="comment">// Sets an element of an Object array.</span>
+</code></pre></li>
+</ol>
+<h3 id="局部和全局变量引用相关函数">局部和全局变量引用相关函数</h3><pre><code><span class="comment">//新建全局引用步骤：查找Class =&gt; 根据局部变量创建全局变量 =&gt; 释放局部变量</span>
+<span class="function"><span class="title">DeleteLocalRef</span><span class="params">()</span></span>
+<span class="function"><span class="title">DeleteGlobalRef</span><span class="params">()</span></span>
+<span class="function"><span class="title">NewGlobalRef</span><span class="params">()</span></span>
+</code></pre><p>参考：<br><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="external">Java Programming Tutorial<br>Java Native Interface (JNI)
+</a></p>
+<h2 id="JNI_Tips">JNI Tips</h2><ol>
+<li>理论上，每个程序可以有多个JavaVM，但Android 只允许有一个</li>
+<li>不可以在线程间共享JNIEnv（可以通过共享JavaVM并调用GetEnv来获取线程的JINEnv）</li>
+<li>函数中每个参数的传入和几乎所有的返回都是局部引用</li>
+<li>比较两个对象是否相同，只能调用<code>isSameObject()</code>，不能用<code>==</code>比较</li>
+<li>JNI的实现中，只有16个的局部引用，可以手动删除不需要的引用或通过<code>EnsureLocalCapacity</code>/<code>PushLocalFrame</code>来增加引用数量</li>
+<li><code>jfieldId</code>和<code>jmethodID</code>不是对象引用，不应该传入<code>NewGlobalRef</code>，<code>GetSringUTFChars</code>和<code>GetByteArrayElements</code>返回的也不是对象引用</li>
+<li>在C中用<code>pthread_create</code>创建的线程，需要用<code>AttachCurrentThread</code>或<code>AttachCurrentThreadAsDaemon</code>附加到JNI，否则将无法调用JNI函数</li>
+<li>如果调用了<code>AttachCurrentThread</code>来附加线程，局部引用将不会自动释放，直到线程分离。通常，在循环中的所有局部引用都需要手动释放</li>
+<li>Java使用的是<code>UTF-16</code>编码，而<code>UTF-8</code>编码更适合C调用string相关函数</li>
+<li><code>UTF-16 string</code>没有<code>zero-terminated</code>，需要另外保存<code>string</code>的长度</li>
+<li>不要忘记释放函数返回的<code>jchar*</code>和<code>jbyte*</code>指针</li>
+<li><code>NewStringUTF</code>需要传入<code>UTF-8</code>格式的字符串</li>
+<li><p>使用<code>JNI_COMMIT</code>参数作释放操作，并不会释放空间，需要再次传入其他参数（<code>0</code>或<code>JNI_ABORT</code>）释放。</p>
+<p>参考：<a href="http://developer.android.com/training/articles/perf-jni.html" target="_blank" rel="external">JNI Tips</a>  </p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/13/Android Studio中使用FFmpeg动态库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Studio使用FFmpeg动态库</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JNI学习" data-title="JNI学习" data-url="/2015/12/16/JNI学习/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
