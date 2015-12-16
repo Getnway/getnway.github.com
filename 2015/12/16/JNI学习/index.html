@@ -7,25 +7,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JNI学习JNI数据类型
 JNI类型
- |JNI     |意义               | |:———:|:————————-:| |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions| |jobject |reference to “this” Java object|
 
-基本">
+|JNI     |意义               |
+|:------:|:-----------------:|
+|JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions|
+|jobject |reference to &quot;this&quot; Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JNI学习">
 <meta property="og:url" content="/2015/12/16/JNI学习/index.html">
 <meta property="og:site_name" content="getNway的博客">
 <meta property="og:description" content="JNI学习JNI数据类型
 JNI类型
- |JNI     |意义               | |:———:|:————————-:| |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions| |jobject |reference to “this” Java object|
 
-基本">
+|JNI     |意义               |
+|:------:|:-----------------:|
+|JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions|
+|jobject |reference to &quot;this&quot; Java">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI学习">
 <meta name="twitter:description" content="JNI学习JNI数据类型
 JNI类型
- |JNI     |意义               | |:———:|:————————-:| |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions| |jobject |reference to “this” Java object|
 
-基本">
+|JNI     |意义               |
+|:------:|:-----------------:|
+|JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions|
+|jobject |reference to &quot;this&quot; Java">
   
     <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
   
@@ -233,15 +239,28 @@ JNI类型
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="JNI学习">JNI学习</h1><h2 id="JNI数据类型">JNI数据类型</h2><ol>
-<li><p>JNI类型</p>
-<p> |JNI     |意义               |<br> |:———:|:————————-:|<br> |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions|<br> |jobject |reference to “this” Java object|</p>
-</li>
-<li><p>基本数据类型（可直接在C语言中使用）</p>
-<p> |JNI     |Java   |<br> |:———:|:——-:|<br> |jint    |int    |<br> |jbyte   |byte   |<br> |jshort  |short  |<br> |jlong   |long   |<br> |jfloat  |float  |<br> |jdouble |double |<br> |jchar   |char   |<br> |jboolean|boolean|</p>
-</li>
+<li>JNI类型</li>
 </ol>
-<a id="more"></a>
-<pre><code>**注意：jint对应的是C中的<span class="keyword">long</span>**  
+<pre><code>|<span class="constant">JNI </span>    |意义               |
+|<span class="symbol">:------</span><span class="symbol">:|</span><span class="symbol">:-----------------</span><span class="symbol">:|</span>
+|<span class="constant">JNIEnv*</span> |reference to <span class="constant">JNI </span>environment, which lets you access all the <span class="constant">JNI </span>fucntions|
+|jobject |reference to <span class="string">"this"</span> <span class="constant">Java </span>object|
+</code></pre><ol>
+<li>基本数据类型（可直接在C语言中使用）</li>
+</ol>
+<pre><code>    |JNI     |Java   |
+    |:------:|:-----:|
+    |jint    |<span class="keyword">int</span>    |
+    |jbyte   |byte   |
+    |jshort  |<span class="keyword">short</span>  |
+    |jlong   |<span class="keyword">long</span>   |
+    |jfloat  |<span class="keyword">float</span>  |
+    |jdouble |<span class="keyword">double</span> |
+    |jchar   |<span class="keyword">char</span>   |
+    |jboolean|boolean|
+
+
+**注意：jint对应的是C中的<span class="keyword">long</span>**  
 
     <span class="comment">// In "win\jni_mh.h" - machine header which is machine dependent</span>
     <span class="keyword">typedef</span> <span class="keyword">long</span>            jint;
@@ -256,10 +275,15 @@ JNI类型
     <span class="keyword">typedef</span> <span class="keyword">double</span>          jdouble;
     <span class="keyword">typedef</span> jint            jsize;
 </code></pre><ol>
-<li><p>Java类型</p>
-<p> |JNI       |Java               |<br> |:————:|:————————-:|<br> |jclass    |java.lang.Class    |<br> |jstring   |java.lang.String   |<br> |jthrowable|java.lang.Throwable|<br> |jarray|八大基本数据类型数组和jobjectArray|</p>
-</li>
+<li>Java类型</li>
 </ol>
+<pre><code>|<span class="constant">JNI </span>      |<span class="constant">Java </span>              |
+|<span class="symbol">:--------</span><span class="symbol">:|</span><span class="symbol">:-----------------</span><span class="symbol">:|</span>
+|jclass    |java.lang.<span class="constant">Class </span>   |
+|jstring   |java.lang.<span class="constant">String </span>  |
+|jthrowable|java.lang.<span class="constant">Throwable|</span>
+|jarray    |八大基本数据类型数组和jobjectArray|
+</code></pre><a id="more"></a>
 <h2 id="JNI函数">JNI函数</h2><ol>
 <li><p>jstring与char* 转换函数 </p>
 <pre><code><span class="comment">// UTF-8 String (encoded to 1-3 byte, backward compatible with 7-bit ASCII)</span>
@@ -385,8 +409,7 @@ jobject <span class="type">AllocObject</span>(<span class="type">JNIEnv</span> *
 <span class="function"><span class="title">DeleteLocalRef</span><span class="params">()</span></span>
 <span class="function"><span class="title">DeleteGlobalRef</span><span class="params">()</span></span>
 <span class="function"><span class="title">NewGlobalRef</span><span class="params">()</span></span>
-</code></pre><p>参考：<br><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="external">Java Programming Tutorial<br>Java Native Interface (JNI)
-</a></p>
+</code></pre><p>参考：<br><a href="https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html" target="_blank" rel="external">Java Programming Tutorial Java Native Interface (JNI)</a></p>
 <h2 id="JNI_Tips">JNI Tips</h2><ol>
 <li>理论上，每个程序可以有多个JavaVM，但Android 只允许有一个</li>
 <li>不可以在线程间共享JNIEnv（可以通过共享JavaVM并调用GetEnv来获取线程的JINEnv）</li>

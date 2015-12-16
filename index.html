@@ -212,13 +212,51 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="JNI学习">JNI学习</h1><h2 id="JNI数据类型">JNI数据类型</h2><ol>
-<li><p>JNI类型</p>
-<p> |JNI     |意义               |<br> |:———:|:————————-:|<br> |JNIEnv* |reference to JNI environment, which lets you access all the JNI fucntions|<br> |jobject |reference to “this” Java object|</p>
-</li>
-<li><p>基本数据类型（可直接在C语言中使用）</p>
-<p> |JNI     |Java   |<br> |:———:|:——-:|<br> |jint    |int    |<br> |jbyte   |byte   |<br> |jshort  |short  |<br> |jlong   |long   |<br> |jfloat  |float  |<br> |jdouble |double |<br> |jchar   |char   |<br> |jboolean|boolean|</p>
-</li>
+<li>JNI类型</li>
 </ol>
+<pre><code>|<span class="constant">JNI </span>    |意义               |
+|<span class="symbol">:------</span><span class="symbol">:|</span><span class="symbol">:-----------------</span><span class="symbol">:|</span>
+|<span class="constant">JNIEnv*</span> |reference to <span class="constant">JNI </span>environment, which lets you access all the <span class="constant">JNI </span>fucntions|
+|jobject |reference to <span class="string">"this"</span> <span class="constant">Java </span>object|
+</code></pre><ol>
+<li>基本数据类型（可直接在C语言中使用）</li>
+</ol>
+<pre><code>    |JNI     |Java   |
+    |:------:|:-----:|
+    |jint    |<span class="keyword">int</span>    |
+    |jbyte   |byte   |
+    |jshort  |<span class="keyword">short</span>  |
+    |jlong   |<span class="keyword">long</span>   |
+    |jfloat  |<span class="keyword">float</span>  |
+    |jdouble |<span class="keyword">double</span> |
+    |jchar   |<span class="keyword">char</span>   |
+    |jboolean|boolean|
+
+
+**注意：jint对应的是C中的<span class="keyword">long</span>**  
+
+    <span class="comment">// In "win\jni_mh.h" - machine header which is machine dependent</span>
+    <span class="keyword">typedef</span> <span class="keyword">long</span>            jint;
+    <span class="keyword">typedef</span> __int64         jlong;
+    <span class="keyword">typedef</span> <span class="keyword">signed</span> <span class="keyword">char</span>     jbyte;
+
+    <span class="comment">// In "jni.h"</span>
+    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>   jboolean;
+    <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">short</span>  jchar;
+    <span class="keyword">typedef</span> <span class="keyword">short</span>           jshort;
+    <span class="keyword">typedef</span> <span class="keyword">float</span>           jfloat;
+    <span class="keyword">typedef</span> <span class="keyword">double</span>          jdouble;
+    <span class="keyword">typedef</span> jint            jsize;
+</code></pre><ol>
+<li>Java类型</li>
+</ol>
+<pre><code>|<span class="constant">JNI </span>      |<span class="constant">Java </span>              |
+|<span class="symbol">:--------</span><span class="symbol">:|</span><span class="symbol">:-----------------</span><span class="symbol">:|</span>
+|jclass    |java.lang.<span class="constant">Class </span>   |
+|jstring   |java.lang.<span class="constant">String </span>  |
+|jthrowable|java.lang.<span class="constant">Throwable|</span>
+|jarray    |八大基本数据类型数组和jobjectArray|
+</code></pre>
       
     </div>
     
