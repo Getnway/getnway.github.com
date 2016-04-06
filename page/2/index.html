@@ -185,6 +185,128 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-FFmpeg例子报错及解决方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/20/FFmpeg例子报错及解决方法/" class="article-date">
+  	<time datetime="2015-11-20T08:27:36.000Z" itemprop="datePublished">Nov-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/FFmpeg例子报错及解决方法/">FFmpeg例子报错及解决方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FFmpeg源码：</p>
+<pre><code><span class="string">https:</span><span class="comment">//github.com/FFmpeg/FFmpeg</span>
+</code></pre><p>例子：</p>
+<pre><code><span class="string">https:</span><span class="comment">//github.com/leixiaohua1020/simplest_ffmpeg_mobile</span>
+</code></pre><h2 id="AS打开上面的例子会有错误">AS打开上面的例子会有错误</h2><h3 id="错误1：">错误1：</h3><pre><code>Error:(<span class="number">12</span>, <span class="number">0</span>) Error: NDK integration is deprecated <span class="operator">in</span> <span class="operator">the</span> current plugin.  Consider trying <span class="operator">the</span> <span class="built_in">new</span> experimental plugin.  For details, see <span class="keyword">http</span>://tools.android.com/tech-docs/<span class="built_in">new</span>-build-<span class="keyword">system</span>/gradle-experimental.  Set <span class="string">"android.useDeprecatedNdk=true"</span> <span class="operator">in</span> gradle.properties <span class="built_in">to</span> continue <span class="keyword">using</span> <span class="operator">the</span> current NDK integration.
+</code></pre><p>在项目根目录新建文件<code>gradle.properties</code>，并增加一行代码：</p>
+<pre><code>android.<span class="variable">useDeprecatedNdk=</span><span class="constant">true</span>
+</code></pre><p>同步项目即可。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFmpeg/">FFmpeg</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/20/FFmpeg例子报错及解决方法/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Android项目打包与签名对比" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/12/Android项目打包与签名对比/" class="article-date">
+  	<time datetime="2015-11-12T02:13:34.000Z" itemprop="datePublished">Nov-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/12/Android项目打包与签名对比/">Android项目打包与签名对比</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="打包项目">打包项目</h2><h3 id="AS打包">AS打包</h3><ol>
+<li>首先在IDE中打开<code>Build - Generate Signed APK...</code><br><img src="http://i.imgur.com/Og0AKlz.png" alt="">  </li>
+<li>如果已有签名文件，则按下图说明填写签名文件路径、密码、别名等，填写完毕点击<code>Next</code>进入第4步。<br>如果还没有签名文件可以点击<code>Create new...</code>到第3步生成一个新签名文件。  </li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/签名/">签名</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/12/Android项目打包与签名对比/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-RxJava初步了解和在Android中的使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -700,137 +822,6 @@ Observable.create(integerOnSubscribe)
 
 
   
-    <article id="post-Effective Java笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/07/Effective Java笔记（一）/" class="article-date">
-  	<time datetime="2015-08-07T05:29:03.000Z" itemprop="datePublished">Aug-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/07/Effective Java笔记（一）/">Effective Java笔记（一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第1条：考虑用静态工厂方法代替构造器">第1条：考虑用静态工厂方法代替构造器</h2><p>优势：  </p>
-<ol>
-<li><strong>静态工厂方法有名称。</strong>构造器只能与类名相同，而静态工厂方法名能取得更有意义。  </li>
-<li><strong>不必多次构建对象。</strong>  </li>
-<li><strong>可以返回原返回类型的任何子类型的对象。</strong>  </li>
-<li><strong>使代码更简洁。</strong><br>构造器：<code>Map&lt;String, List&lt;String&gt;&gt; m = new HashMap&lt;String, List&lt;String&gt;&gt;();</code><br>静态工厂：<code>Map&lt;Stirng, List&lt;String&gt;&gt; m = HashMap.newInstance();</code>  </li>
-</ol>
-<p>缺点：  </p>
-<ol>
-<li><strong>类如果不含 public 或 protect 的构造器，就不能被子类化。</strong>  </li>
-<li><strong>与其他静态方法实际上没有任何区别。</strong>  </li>
-</ol>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Effective-Java/">Effective Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/07/Effective Java笔记（一）/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Java基础查漏补缺" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/07/Java基础查漏补缺/" class="article-date">
-  	<time datetime="2015-08-07T05:27:39.000Z" itemprop="datePublished">Aug-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/07/Java基础查漏补缺/">Java基础查漏补缺</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Java基础查漏补缺">Java基础查漏补缺</h2><ol>
-<li><p>Java是一种<strong>解释型</strong>语言，所以它的执行效率相对就会慢一些，但由于Java语言采用了两种手段，使得其性能还是不错的。<br>A、 Java语言源程序编写完成后，先使用Java伪编译器进行伪编译，将其转换为中间码（也称为字节码），再解释；<br>B、 提供了一种“准实时”（Just-in-Time，JIT）编译器，当需要更快的速度时，可以使用JIT编译器将字节码转换成机器码，然后将其缓冲下来，这样速度就会更快。</p>
-</li>
-<li><p>Java 编译器通过伪编译后，将生成一个与任何计算机体系统无关的“中性”的字节码，再通过在不同平台上运行Java解释器，对Java代码进行解释。</p>
-</li>
-<li><p>Java语言中含有方法重载与成员（函数、变量）覆盖两种形式的多态。</p>
-</li>
-<li><p>可以用this实现其他函数调用构造方法:<br> <code>this()    //调用无参数构造方法    （注意：只能放在其他函数第一行）</code></p>
-</li>
-<li><p>用static声明的内部类则变成外部类，但是用static声明的内部类不能访问非static的外部类属性。</p>
-</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -841,7 +832,7 @@ Observable.create(integerOnSubscribe)
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 getNway
+    		&copy; 2016 getNway
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

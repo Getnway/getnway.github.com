@@ -185,6 +185,119 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-编译QFtp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/02/05/编译QFtp/" class="article-date">
+  	<time datetime="2015-02-05T14:30:07.000Z" itemprop="datePublished">Feb-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/05/编译QFtp/">QFtp的编译与使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基于QT的FTP客户端">基于QT的FTP客户端</h3><p><strong>Qt5.0</strong>以后，将<code>QFtp</code>移除了，推荐使用<code>QNetworkAccessManager</code>。<br>根据官方的建议使用<code>QNetworkAccessManager</code>进行开发，实现Ftp的上传和下载功能，但当先要实现获取文件列表显示时，却发现有些原本<code>QFtp</code>有的功能，<code>QNetworkAccessManager</code>却没有提供，如获取远程FTP服务器列表功能<code>list()</code>，新建文件夹<code>mkdir()</code>等功能。（更多区别请查看<a href="http://qt-project.org/doc/qt-4.8/qftp.html" title="QFtp Class Reference">QFtp Class Reference</a>与<a href="http://doc.qt.io/qt-5/qnetworkaccessmanager.html" title="QNetworkAccessManager Class">QNetworkAccessManager Class</a>）。<br><img src="http://i.imgur.com/TncRtzj.png" alt="获取FTP服务器列表"></p>
+<p>于是，只能自己找资料了，经搜索发现，可以使用<code>QFtp</code>但要自行编译，且<code>QFtp</code>的代码一直在维护。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ftp乱码/">Ftp乱码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QFtp/">QFtp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/02/05/编译QFtp/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-QSqlQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/02/01/QSqlQuery/" class="article-date">
+  	<time datetime="2015-02-01T14:00:37.000Z" itemprop="datePublished">Feb-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/01/QSqlQuery/">QSqlQuery基本使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="QSqlQuery">QSqlQuery</h2><p>QSqlQuery支持DML(data manipulation language)语法，如：<code>SELECT, INSERT,UPDATE and DELETE</code>；也支持DDL(data definition language)语法，如：<code>CREATE TABLE</code>；还支持非标准的特点数据库命令，如：<code>SET DATESTYLE=ISO</code> for PostgreSQL。<br><strong>注意：</strong>在QSqlQuery对象创建前，需打开数据库，且保持其打开状态，否则将出现未定义行为。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSqlQuery/">QSqlQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库操作/">数据库操作</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/02/01/QSqlQuery/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-QSQLDatabase" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -318,7 +431,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 getNway
+    		&copy; 2016 getNway
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

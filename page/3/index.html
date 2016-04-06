@@ -185,6 +185,137 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Effective Java笔记（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/07/Effective Java笔记（一）/" class="article-date">
+  	<time datetime="2015-08-07T05:29:03.000Z" itemprop="datePublished">Aug-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/07/Effective Java笔记（一）/">Effective Java笔记（一）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第1条：考虑用静态工厂方法代替构造器">第1条：考虑用静态工厂方法代替构造器</h2><p>优势：  </p>
+<ol>
+<li><strong>静态工厂方法有名称。</strong>构造器只能与类名相同，而静态工厂方法名能取得更有意义。  </li>
+<li><strong>不必多次构建对象。</strong>  </li>
+<li><strong>可以返回原返回类型的任何子类型的对象。</strong>  </li>
+<li><strong>使代码更简洁。</strong><br>构造器：<code>Map&lt;String, List&lt;String&gt;&gt; m = new HashMap&lt;String, List&lt;String&gt;&gt;();</code><br>静态工厂：<code>Map&lt;Stirng, List&lt;String&gt;&gt; m = HashMap.newInstance();</code>  </li>
+</ol>
+<p>缺点：  </p>
+<ol>
+<li><strong>类如果不含 public 或 protect 的构造器，就不能被子类化。</strong>  </li>
+<li><strong>与其他静态方法实际上没有任何区别。</strong>  </li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Effective-Java/">Effective Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/07/Effective Java笔记（一）/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Java基础查漏补缺" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/07/Java基础查漏补缺/" class="article-date">
+  	<time datetime="2015-08-07T05:27:39.000Z" itemprop="datePublished">Aug-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/07/Java基础查漏补缺/">Java基础查漏补缺</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java基础查漏补缺">Java基础查漏补缺</h2><ol>
+<li><p>Java是一种<strong>解释型</strong>语言，所以它的执行效率相对就会慢一些，但由于Java语言采用了两种手段，使得其性能还是不错的。<br>A、 Java语言源程序编写完成后，先使用Java伪编译器进行伪编译，将其转换为中间码（也称为字节码），再解释；<br>B、 提供了一种“准实时”（Just-in-Time，JIT）编译器，当需要更快的速度时，可以使用JIT编译器将字节码转换成机器码，然后将其缓冲下来，这样速度就会更快。</p>
+</li>
+<li><p>Java 编译器通过伪编译后，将生成一个与任何计算机体系统无关的“中性”的字节码，再通过在不同平台上运行Java解释器，对Java代码进行解释。</p>
+</li>
+<li><p>Java语言中含有方法重载与成员（函数、变量）覆盖两种形式的多态。</p>
+</li>
+<li><p>可以用this实现其他函数调用构造方法:<br> <code>this()    //调用无参数构造方法    （注意：只能放在其他函数第一行）</code></p>
+</li>
+<li><p>用static声明的内部类则变成外部类，但是用static声明的内部类不能访问非static的外部类属性。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-struct与class区别" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -674,119 +805,6 @@ QSettings settings;
 
 
   
-    <article id="post-编译QFtp" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/05/编译QFtp/" class="article-date">
-  	<time datetime="2015-02-05T14:30:07.000Z" itemprop="datePublished">Feb-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/05/编译QFtp/">QFtp的编译与使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="基于QT的FTP客户端">基于QT的FTP客户端</h3><p><strong>Qt5.0</strong>以后，将<code>QFtp</code>移除了，推荐使用<code>QNetworkAccessManager</code>。<br>根据官方的建议使用<code>QNetworkAccessManager</code>进行开发，实现Ftp的上传和下载功能，但当先要实现获取文件列表显示时，却发现有些原本<code>QFtp</code>有的功能，<code>QNetworkAccessManager</code>却没有提供，如获取远程FTP服务器列表功能<code>list()</code>，新建文件夹<code>mkdir()</code>等功能。（更多区别请查看<a href="http://qt-project.org/doc/qt-4.8/qftp.html" title="QFtp Class Reference">QFtp Class Reference</a>与<a href="http://doc.qt.io/qt-5/qnetworkaccessmanager.html" title="QNetworkAccessManager Class">QNetworkAccessManager Class</a>）。<br><img src="http://i.imgur.com/TncRtzj.png" alt="获取FTP服务器列表"></p>
-<p>于是，只能自己找资料了，经搜索发现，可以使用<code>QFtp</code>但要自行编译，且<code>QFtp</code>的代码一直在维护。<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ftp乱码/">Ftp乱码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QFtp/">QFtp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/05/编译QFtp/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-QSqlQuery" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/01/QSqlQuery/" class="article-date">
-  	<time datetime="2015-02-01T14:00:37.000Z" itemprop="datePublished">Feb-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/01/QSqlQuery/">QSqlQuery基本使用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="QSqlQuery">QSqlQuery</h2><p>QSqlQuery支持DML(data manipulation language)语法，如：<code>SELECT, INSERT,UPDATE and DELETE</code>；也支持DDL(data definition language)语法，如：<code>CREATE TABLE</code>；还支持非标准的特点数据库命令，如：<code>SET DATESTYLE=ISO</code> for PostgreSQL。<br><strong>注意：</strong>在QSqlQuery对象创建前，需打开数据库，且保持其打开状态，否则将出现未定义行为。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSqlQuery/">QSqlQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库操作/">数据库操作</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/01/QSqlQuery/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -797,7 +815,7 @@ QSettings settings;
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 getNway
+    		&copy; 2016 getNway
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
