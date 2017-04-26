@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android.mk文件 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android.mk是一个GNU makefile片段，编译器会解析其一次或多次。
+
+最简单的Android.mk# Android.mk必须由定义LOCAL_PATH变量开始
+# my-dir是编译系统提供的宏，返回当前文件所在文件夹路径
+LOCAL_PATH := $(call my-dir)
+
+# 重置几乎所有的LOCAL_XXX变量。必须在每个module描述前声明该句。
+include">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android.mk文件">
+<meta property="og:url" content="/2016/09/06/Android.mk文件/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="Android.mk是一个GNU makefile片段，编译器会解析其一次或多次。
+
+最简单的Android.mk# Android.mk必须由定义LOCAL_PATH变量开始
+# my-dir是编译系统提供的宏，返回当前文件所在文件夹路径
+LOCAL_PATH := $(call my-dir)
+
+# 重置几乎所有的LOCAL_XXX变量。必须在每个module描述前声明该句。
+include">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android.mk文件">
+<meta name="twitter:description" content="Android.mk是一个GNU makefile片段，编译器会解析其一次或多次。
+
+最简单的Android.mk# Android.mk必须由定义LOCAL_PATH变量开始
+# my-dir是编译系统提供的宏，返回当前文件所在文件夹路径
+LOCAL_PATH := $(call my-dir)
+
+# 重置几乎所有的LOCAL_XXX变量。必须在每个module描述前声明该句。
+include">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Android">Android</a></li>
+				        
+							<li><a href="/tags/C">C++</a></li>
+				        
+							<li><a href="/tags/JNI">JNI</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Activity/" style="font-size: 10px;">Activity</a><a href="/tags/Android/" style="font-size: 20px;">Android</a><a href="/tags/Awesomium/" style="font-size: 10px;">Awesomium</a><a href="/tags/C/" style="font-size: 18.57px;">C++</a><a href="/tags/Cygwin/" style="font-size: 10px;">Cygwin</a><a href="/tags/Effective/" style="font-size: 12.86px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 12.86px;">FFmpeg</a><a href="/tags/Freeline/" style="font-size: 10px;">Freeline</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JIT/" style="font-size: 10px;">JIT</a><a href="/tags/JNI/" style="font-size: 17.14px;">JNI</a><a href="/tags/Java/" style="font-size: 15.71px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 17.14px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/MarkDownPad-2/" style="font-size: 10px;">MarkDownPad 2</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 14.29px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 14.29px;">Qt</a><a href="/tags/RxJava/" style="font-size: 11.43px;">RxJava</a><a href="/tags/SDK/" style="font-size: 10px;">SDK</a><a href="/tags/Services/" style="font-size: 10px;">Services</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/Vysor/" style="font-size: 10px;">Vysor</a><a href="/tags/Windows/" style="font-size: 10px;">Windows</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/下载/" style="font-size: 10px;">下载</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 11.43px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/镜像/" style="font-size: 10px;">镜像</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Android">Android</a></li>
+		        
+					<li><a href="/tags/C">C++</a></li>
+		        
+					<li><a href="/tags/JNI">JNI</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Android.mk文件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/06/Android.mk文件/" class="article-date">
+  	<time datetime="2016-09-06T05:50:03.000Z" itemprop="datePublished">Sep-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android.mk文件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JNI/">JNI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NDK/">NDK</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><code>Android.mk</code>是一个GNU makefile片段，编译器会解析其一次或多次。</li>
+</ul>
+<h2 id="最简单的Android-mk">最简单的Android.mk</h2><pre><code><span class="comment"># Android.mk必须由定义LOCAL_PATH变量开始</span>
+<span class="comment"># my-dir是编译系统提供的宏，返回当前文件所在文件夹路径</span>
+<span class="constant">LOCAL_PATH </span><span class="symbol">:</span>= <span class="variable">$(</span>call my-dir)
+
+<span class="comment"># 重置几乎所有的LOCAL_XXX变量。必须在每个module描述前声明该句。</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">CLEAR_VARS)</span>
+
+<span class="comment"># 指定生成的文件名。</span>
+<span class="constant">LOCAL_MODULE </span><span class="symbol">:</span>= hello-jni
+
+<span class="comment"># 指定源文件。（多个源文件时，空格隔开）</span>
+<span class="constant">LOCAL_SRC_FILES </span><span class="symbol">:</span>= hello-jni.c
+
+<span class="comment"># 指定编译行为。这里是生成动态库.so</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">BUILD_SHARED_LIBRARY)</span>
+</code></pre><h2 id="宏和变量">宏和变量</h2><p>如果需要定义自己的变量，可以考虑使用<code>MY_</code>开头，而不是<code>LOCAL_</code>、<code>PRIVATE_</code>、<code>NDK_</code>、<code>APP</code>，因为编译系统内部有使用这些开头的变量。</p>
+<a id="more"></a>
+<ul>
+<li>NDK定义的变量</li>
+</ul>
+<pre><code><span class="comment"># CLEAR_VARS指向特定的GNU makefile，以可重置几乎所有的LOCAL_XXX变量，如LOCAL_MODULE,LOCAL_SRC_FILES, LOCAL_STATIC_LIBRARIES但不包括LOCAL_PATH。</span>
+<span class="comment"># 由于编译系统使用单一的GUN Make解析所有makefile文件，所有的变量都是全局变量，因此，每个module必须重定义变量。</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">CLEAR_VARS)</span>
+
+<span class="comment"># 生成动态库.so，至少需要定义LOCAL_MODULE和LOCAL_SRC_FILES。</span>
+<span class="comment"># BUILD_SHARED_LIBRARY指向特定的GUN Makefile，用于收集定义的所有LOCAL_XXX信息（从离该语句最近的include开始收集）</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">BUILD_SHARED_LIBRARY)</span>
+
+<span class="comment"># 生成静态库.a，编译系统不会将静态库复制到项目或软件包中，但可以用静态库生成动态库。</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">BUILD_STATIC_LIBRARY)</span>
+
+<span class="comment"># 与BUILD_SHARED_LIBRARY、BUILD_STATIC_LIBRARY不同，LOCAL_SRC_FILES需要  </span>
+<span class="comment"># 指向已编译好的动态库。在其他module中可以指定LOCAL_PREBUILTS来使用这里生成的动态库。</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">PREBUILT_SHARED_LIBRARY)</span>
+
+<span class="comment"># 与PREBUILT_SHARED_LIBRARY类似。</span>
+<span class="keyword">include</span> <span class="variable">$(</span><span class="constant">PREBUILT_STATIC_LIBRARY)</span>
+
+<span class="comment"># 指定生成目标的Android API level。</span>
+<span class="constant">TARGET_PLATFORM </span><span class="symbol">:</span>= android-<span class="number">22</span>
+
+<span class="comment"># 指定生成目标的CPU架构（armeabi，armeabi-v7a，arm64-v8a，x86，x86_64，mips，mips64或all）。</span>
+<span class="constant">TARGET_ARCH_ABI </span><span class="symbol">:</span>= arm64-v8a
+
+<span class="comment"># 指定生成目标的API level和CPU架构。</span>
+<span class="constant">TARGET_ABI </span><span class="symbol">:</span>= android-<span class="number">22</span>-arm64-v8a
+</code></pre><ul>
+<li>Module描述变量</li>
+</ul>
+<pre><code><span class="comment"># 获取当前文件路径。必须位于Android.mk开头，CLEAR_VARS无法重置该变量。</span>
+<span class="constant">LOCAL_PATH</span> := <span class="variable">$(call my-dir)</span>
+
+<span class="comment"># 生成文件名。（无需添加前缀lib和后缀.so或.a，编译系统会自动添加。)</span>
+<span class="constant">LOCAL_MODULE</span> := "foo"    # 如果指定生成动态库，则最终文件名为libfoo.so
+
+<span class="comment"># 生成文件名。（会覆盖LOCAL_MODULE所指定的文件名）</span>
+<span class="constant">LOCAL_MODULE_FILENAME</span> := libnewfoo    # 如果指定生成动态库，则最终文件名为libnewfoo.so
+
+<span class="comment"># 需要编译的源文件。（可使用相对路径或绝对路径，并使用斜杠"/"）</span>
+<span class="constant">LOCAL_SRC_FILES</span> := hello-jni.c hello.c
+
+<span class="comment"># C++扩展名。</span>
+<span class="constant">LOCAL_CPP_EXTENSION</span> := .cxx .cpp .cc
+
+<span class="comment"># C++依赖特性。（建议使用该变量替代使用LOCAL_CPPFLAGS ，因为该变量会在module需要时才加入特性，而 LOCAL_CPPFLAGS 则不管是否需要都加入。）</span>
+<span class="constant">LOCAL_CPP_FEATURES</span> := rtti exceptions
+
+<span class="comment"># 增加include文件的搜索路径。需在 LOCAL_CFLAGS 和 LOCAL_CPPFLAGS 之前设置该变量。（默认路径相对于于&lt;ndk_root&gt;。）</span>
+<span class="constant">LOCAL_C_INCLUDES</span> := sources/foo
+<span class="comment"># 可使用$(LOCAL_PATH)//foo。</span>
+<span class="constant">LOCAL_C_INCLUDES</span> := <span class="variable">$(LOCAL_PATH)</span>//foo
+
+<span class="comment"># 编译器flags。对C和C++源文件都有效。（可选。不改变optimization/debugging level的情况下，编译系统自动设置该变量）</span>
+<span class="constant">LOCAL_CFLAGS</span> += -I&lt;path&gt;
+<span class="constant">LOCAL_CPPFLAGS</span> += -I&lt;path&gt;
+
+<span class="comment"># 生成文件是需要依赖的静态/动态库</span>
+LOCAL_STATIC_LIBRARIES
+LOCAL_SHARED_LIBRARIES
+LOCAL_WHOLE_STATIC_LIBRARIES
+
+<span class="comment"># 加载时链接其他库。生成动态库或可执行文件时可用。定义为静态库无效。（使用-l前缀）</span>
+<span class="constant">LOCAL_LDLIBS</span> := -lz    # links to /system/lib/libz.so
+
+<span class="comment"># 其他链接器</span>
+<span class="constant">LOCAL_LDFLAGS</span> += -fuse-ld=bfd    # -fuse-ld=gold is default
+
+<span class="comment"># --以下是其他不常用的变量--</span>
+LOCAL_ALLOW_UNDEFINED_SYMBOLS
+LOCAL_ARM_MODE
+LOCAL_ARM_NEON
+LOCAL_DISABLE_NO_EXECUTE
+LOCAL_DISABLE_RELRO
+LOCAL_DISABLE_FORMAT_STRING_CHECKS
+LOCAL_EXPORT_CFLAGS
+LOCAL_EXPORT_CPPFLAGS
+LOCAL_EXPORT_C_INCLUDES
+LOCAL_EXPORT_LDFLAGS
+LOCAL_EXPORT_LDLIBS
+LOCAL_SHORT_COMMANDS
+LOCAL_THIN_ARCHIVE
+LOCAL_FILTER_ASM
+</code></pre><ul>
+<li>NDK提供的函数宏</li>
+</ul>
+<pre><code><span class="comment"># 返回最后被include的makefile路径。一般是当前Android.mk所在文件夹。</span>
+my-dir
+
+<span class="comment"># 返回所有子文件夹的makefile文件路径</span>
+all-subdir-makefiles
+
+<span class="comment"># 返回当前makefile文件路径</span>
+this-makefile
+
+<span class="comment"># 返回父级makefile文件路径（即include当前makefile的那个makefile的路径）  </span>
+parent-makefile
+
+<span class="comment"># 返回祖父级makefile文件路径</span>
+grand-parent-makefile
+
+<span class="comment"># 查找并include一个module的Android.mk</span>
+import-<span class="class"><span class="keyword">module</span></span>
+<span class="variable">$(</span>call import-<span class="class"><span class="keyword">module</span>,<span class="inheritance">&lt;<span class="parent">name_of_module</span></span>&gt;)</span>
+</code></pre><p>笔记整理自：<a href="https://developer.android.com/ndk/guides/android_mk.html" title="https://developer.android.com/ndk/guides/android_mk.html" target="_blank" rel="external">Android.mk</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/06/Application.mk文件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Application.mk文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/05/NDK开发要注意的几点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NDK开发要注意的几点</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android.mk文件" data-title="Android.mk文件" data-url="/2016/09/06/Android.mk文件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JAVA编程思想笔记 | getNway的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="内存
+一旦垃圾回收器准备释放对象，会先调用其finalize()，并在下次垃圾回收动作发生时，才真正回收对象。不建议在finalize()中手动清理。
+只有在面临内存耗尽时，才会执行垃圾回收，因为这需要耗时。
+JAVA的对象是紧凑排列在堆上的（因此，每次释放对象后，都需要重排列堆中未被释放的对象），分配新对象时，其“堆指针”只需简单向前移动一格（类似于栈，所以很高效），而C++则需要在堆上查找空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA编程思想笔记">
+<meta property="og:url" content="/2016/02/04/JAVA编程思想笔记/index.html">
+<meta property="og:site_name" content="getNway的博客">
+<meta property="og:description" content="内存
+一旦垃圾回收器准备释放对象，会先调用其finalize()，并在下次垃圾回收动作发生时，才真正回收对象。不建议在finalize()中手动清理。
+只有在面临内存耗尽时，才会执行垃圾回收，因为这需要耗时。
+JAVA的对象是紧凑排列在堆上的（因此，每次释放对象后，都需要重排列堆中未被释放的对象），分配新对象时，其“堆指针”只需简单向前移动一格（类似于栈，所以很高效），而C++则需要在堆上查找空间">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA编程思想笔记">
+<meta name="twitter:description" content="内存
+一旦垃圾回收器准备释放对象，会先调用其finalize()，并在下次垃圾回收动作发生时，才真正回收对象。不建议在finalize()中手动清理。
+只有在面临内存耗尽时，才会执行垃圾回收，因为这需要耗时。
+JAVA的对象是紧凑排列在堆上的（因此，每次释放对象后，都需要重排列堆中未被释放的对象），分配新对象时，其“堆指针”只需简单向前移动一格（类似于栈，所以很高效），而C++则需要在堆上查找空间">
+  
+    <link rel="alternative" href="/atom.xml" title="getNway的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">getNway</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">此刻就是起点</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Android">Android</a></li>
+				        
+							<li><a href="/tags/C">C++</a></li>
+				        
+							<li><a href="/tags/JNI">JNI</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Activity/" style="font-size: 10px;">Activity</a><a href="/tags/Android/" style="font-size: 20px;">Android</a><a href="/tags/Awesomium/" style="font-size: 10px;">Awesomium</a><a href="/tags/C/" style="font-size: 18.57px;">C++</a><a href="/tags/Cygwin/" style="font-size: 10px;">Cygwin</a><a href="/tags/Effective/" style="font-size: 12.86px;">Effective</a><a href="/tags/Effective-Java/" style="font-size: 10px;">Effective Java</a><a href="/tags/FFmpeg/" style="font-size: 12.86px;">FFmpeg</a><a href="/tags/Freeline/" style="font-size: 10px;">Freeline</a><a href="/tags/Ftp乱码/" style="font-size: 10px;">Ftp乱码</a><a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a><a href="/tags/Intent/" style="font-size: 10px;">Intent</a><a href="/tags/JIT/" style="font-size: 10px;">JIT</a><a href="/tags/JNI/" style="font-size: 17.14px;">JNI</a><a href="/tags/Java/" style="font-size: 15.71px;">Java</a><a href="/tags/Kali/" style="font-size: 10px;">Kali</a><a href="/tags/Linux/" style="font-size: 17.14px;">Linux</a><a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a><a href="/tags/MarkDownPad-2/" style="font-size: 10px;">MarkDownPad 2</a><a href="/tags/More-Effective/" style="font-size: 10px;">More Effective</a><a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a><a href="/tags/NDK/" style="font-size: 14.29px;">NDK</a><a href="/tags/QFtp/" style="font-size: 10px;">QFtp</a><a href="/tags/QSetting/" style="font-size: 10px;">QSetting</a><a href="/tags/QSqlDatabase/" style="font-size: 10px;">QSqlDatabase</a><a href="/tags/QSqlQuery/" style="font-size: 10px;">QSqlQuery</a><a href="/tags/QVariant/" style="font-size: 10px;">QVariant</a><a href="/tags/Qt/" style="font-size: 14.29px;">Qt</a><a href="/tags/RxJava/" style="font-size: 11.43px;">RxJava</a><a href="/tags/SDK/" style="font-size: 10px;">SDK</a><a href="/tags/Services/" style="font-size: 10px;">Services</a><a href="/tags/Shell/" style="font-size: 10px;">Shell</a><a href="/tags/Vysor/" style="font-size: 10px;">Vysor</a><a href="/tags/Windows/" style="font-size: 10px;">Windows</a><a href="/tags/class/" style="font-size: 10px;">class</a><a href="/tags/const/" style="font-size: 10px;">const</a><a href="/tags/static/" style="font-size: 10px;">static</a><a href="/tags/struct/" style="font-size: 10px;">struct</a><a href="/tags/下载/" style="font-size: 10px;">下载</a><a href="/tags/个人生活/" style="font-size: 10px;">个人生活</a><a href="/tags/全局静态存储区/" style="font-size: 10px;">全局静态存储区</a><a href="/tags/动态库/" style="font-size: 10px;">动态库</a><a href="/tags/堆区/" style="font-size: 10px;">堆区</a><a href="/tags/打包/" style="font-size: 10px;">打包</a><a href="/tags/操作符/" style="font-size: 10px;">操作符</a><a href="/tags/数据库/" style="font-size: 11.43px;">数据库</a><a href="/tags/数据库操作/" style="font-size: 10px;">数据库操作</a><a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a><a href="/tags/栈区/" style="font-size: 10px;">栈区</a><a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a><a href="/tags/签名/" style="font-size: 10px;">签名</a><a href="/tags/类的大小/" style="font-size: 10px;">类的大小</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/编译/" style="font-size: 11.43px;">编译</a><a href="/tags/虚函数/" style="font-size: 10px;">虚函数</a><a href="/tags/虚基类/" style="font-size: 10px;">虚基类</a><a href="/tags/镜像/" style="font-size: 10px;">镜像</a><a href="/tags/面试经历/" style="font-size: 10px;">面试经历</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hclab.cn">环创电脑工作室</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://zoufeng.net">foam的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://hexo.trity.cc/">Trity的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一只来自韶关学院环创电脑工作室的程序猿，在此Blog记录与分享猿生涯。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">getNway</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://file25.mafengwo.net/M00/8B/78/wKgB4lJssJKAfW7NAAD12LDSYnY84.jpeg">
+				<hgroup>
+				  <h1 class="header-author">getNway</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">此刻就是起点</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Android">Android</a></li>
+		        
+					<li><a href="/tags/C">C++</a></li>
+		        
+					<li><a href="/tags/JNI">JNI</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Getnway" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="mailto:getnway@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-JAVA编程思想笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/04/JAVA编程思想笔记/" class="article-date">
+  	<time datetime="2016-02-04T05:48:01.000Z" itemprop="datePublished">Feb-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA编程思想笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JIT/">JIT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="内存">内存</h2><ol>
+<li><strong>一旦垃圾回收器准备释放对象，会先调用其finalize()，并在下次垃圾回收动作发生时，才真正回收对象。不建议在finalize()中手动清理。</strong></li>
+<li><strong>只有在面临内存耗尽时，才会执行垃圾回收，因为这需要耗时。</strong></li>
+<li><strong>JAVA的对象是紧凑排列在堆上的</strong>（因此，每次释放对象后，都需要重排列堆中未被释放的对象）<strong>，分配新对象时，其“堆指针”只需简单向前移动一格（类似于栈，所以很高效），而C++则需要在堆上查找空间。</strong></li>
+<li><strong>两种内存回收机制：</strong><ul>
+<li><strong>停止-复制</strong>（暂停程序，复制存活的对象到另一个堆）</li>
+<li><strong>标记-清理</strong>（由栈区和静态存储区出发，遍历所有引用，标记对象，全部标记完后才开始清理动作）</li>
+<li>【前者不管是否有垃圾产生都会复制，效率低；后者清理垃圾之后，堆空间不连续，需重新整理。虚拟机会根据情况自动调整回收方式。】</li>
+</ul>
+</li>
+</ol>
+<h2 id="效率">效率</h2><ol>
+<li><strong>JIT（Just-In-Time）可将程序部分或全部翻译成本地机器码</strong>（这本来是虚拟机的工作）<strong>，使程序运行速度提升。</strong></li>
+</ol>
+<a id="more"></a>
+<h2 id="初始化">初始化</h2><ol>
+<li>类内的基本数据成员保证都会有一个初始值（除boolean为false，其他都为0），对象引用为null。</li>
+<li>类内变量的定义顺序决定初始化顺序。新建对象时：静态成员 =&gt; 非静态成员 =&gt; 构造函数</li>
+</ol>
+<h2 id="多态">多态</h2><ol>
+<li>静态方法不具有多态性。</li>
+<li>组合技术通常用于想在新类中使用现有类的功能而非它的接口。</li>
+<li>组合or继承？依据是：是否需要向基类向上转型。</li>
+<li>组合一般是将现有类型作为新类型底层实现的一部分来加以复用，而继承复用的是接口。</li>
+</ol>
+<h2 id="陷阱">陷阱</h2><ol>
+<li>若子类覆盖了父类的方法，在父类中调该同名方法时，被调用的将是子类中的那个，且此时子类变量并未初始化（是0）。</li>
+</ol>
+<h2 id="接口">接口</h2><ol>
+<li>使用接口的核心原因：为了能够向上转型为多个基类型。</li>
+<li>如果知道某事物应该成为一个基类，那个第一选择应该是使他成为一个接口。</li>
+<li>当实现某个接口时，并不需要实现嵌套在其内部的任何接口。</li>
+<li>使用原则：优先选择类而不是接口。从类开始，如果接口的必须行变得非常明确，那么久进行重构。</li>
+</ol>
+<h2 id="其他">其他</h2><ol>
+<li>每个源文件只能有一个public类，切类名要与文件名相同，否则报错。</li>
+<li>使用jar文件是要指定具体路径和文件名，而不只是所在目录。</li>
+<li>指定构造函数为private，可阻止此类继承。</li>
+<li>final修饰的基本类型，可以在编译时执行计算，减轻运行时负担。</li>
+<li>对于基本数据类型，final使数值恒定不变；对于对象引用，final使引用恒定不变（数组也是对象）。</li>
+<li>不能因为某数据是final的就认为在编译时可以知道它的值。</li>
+<li>必须在域的定义出或者每个构造器中用表达式对final进行赋值。</li>
+<li>类中所有的private方法都隐式地指定为是final的。</li>
+<li>现代Java的容器库用ArrayList替代了Vector。</li>
+<li>现代容器库用HashMap替代了Hashtable。</li>
+<li>static对象和static代码段都会在加载时，根据定义顺序初始化。</li>
+<li>Java中处了static方法和final方法（private方法属于final方法）之外，其他方法都是后期绑定。</li>
+<li>声明方法为final可以“关闭”动态绑定。</li>
+</ol>
+<h2 id="设计模式">设计模式</h2><ol>
+<li>策略模式：一个能根据所传的参数对象的不同而具有不同行为的方法。</li>
+</ol>
+<h2 id="内部类">内部类</h2><ol>
+<li>必须使用外部类的对象创建内部类：<code>Outer.Inner inner = outer.new Inner();</code></li>
+<li>如果定义一个匿名内部类，并希望它使用一个在其外部定义的对象，那么编译器会要求其参数引用是final的。</li>
+<li>通过实例初始化，就能够达到为匿名内部类创建一个构造器的效果：<br> public static Inner getInner(){<pre><code><span class="keyword">return</span> <span class="keyword">new</span> Inner(){
+    {<span class="built_in">print</span>(<span class="string">"Inside instance initalizer"</span>)}
+}
+</code></pre> }</li>
+<li>匿名内部类只能继承一个类或实现一个接口中的其中一个。</li>
+<li>如果不需要内部类对象与其外围类对象之间有联系，那么可以将内部类声明为static，使其成为嵌套类。</li>
+<li>普通类的不能哟static数据和static字段，也不能包含嵌套类。</li>
+<li>可以通过多个内部类继承多个非接口类（类或抽象类），以实现“多继承”。</li>
+<li>回调的价值在于它的灵活性，可以在运行时动态地决定需要调用什么方法。</li>
+<li>一个类继承自内部类而非外围类时，默认的构造器并不算好，而且不能只是传递一个纸箱外围类的对象的引用。此外，必须在构造器内使用这样的语法：<code>enclosingClassReference.super()</code>。这样才提供了必要的引用，程序才能编译通过。</li>
+<li>“覆盖”内部类就好像它外围类的一个方法，其实并不起什么作用。</li>
+</ol>
+<h2 id="容器">容器</h2><ol>
+<li>你应该常见一个具体类的对象，将其转型为对应点额接口，然后在其余的代码中都使用这个接口。</li>
+<li>使用<code>Arrays.asList()</code>的输出，将其当做<code>List</code>时，其底层表示的是数组，不能调整尺寸。</li>
+<li><code>TreeSet</code>按照比较结果升序保存对象，<code>LinkedHashSet</code>按照被调价的顺序保存对象。</li>
+<li><code>ArrayList</code>随机访问快，中间插入或移除较慢。<code>LinkedList</code>随机访问较慢，中间插入或删除代价较低，优化了顺序访问。</li>
+<li><code>List</code>查找或删除某个元素时，都使用<code>equals()</code>比较对象引用。（<code>indexOf()</code>,<code>remove()</code>,<code>retainAll()</code>,<code>removeAll()</code>);</li>
+<li>如果传递给<code>toArray()</code>的参数数组太小，其将创建一个具有合适尺寸的数组。</li>
+<li>迭代器能够将遍历序列的操作与序列底层的结构分离。</li>
+<li><code>Iteratot</code>只能向前移动，但<code>ListIterator</code>可以双向移动。</li>
+<li><code>HashSet</code>所维护的顺序与<code>TreeSet</code>和<code>LinkedHashSet</code>都不同。<code>HashSet</code>使用的是散列函数，<code>TreeSet</code>底层是红-黑树，<code>LinkedHashList</code>也使用散列，但看起来他使用了链表来维护元素的出入顺序。</li>
+<li>自动包装机制将会发生在不能使用基本类型的容器的操作中。</li>
+<li><code>Queue</code>接口窄化了对<code>LinkedList</code>的方法的访问权限，以使得只有恰当的方法才可以使用。</li>
+<li>如果你创建了任何实现<code>Iterable</code>的类，都可以将它用于<code>foreach</code>语句中。</li>
+<li><code>foreach</code>语句可以用于数组或其他任何<code>Iterable</code>，但是这并不意味着数组肯定也是一个<code>Iterable</code>,而任何自动包装也不会自动发生。不存在任何从数组到<code>Iterable</code>的自动转换，必须手工执行转换。</li>
+<li>当你有一个接口并需要另一个接口时，编写适配器就可以解决问题。</li>
+<li><p><code>Arrays.toList()</code>产生的List对象不会使底层数组作为其物理实现。</p>
+<p>Integer[] ia = {1, 2, 3};<br>List<integer> list1 = new ArrayList<integer>(Arrays.asList(ia)); // 不会改变原数组<br>List<integer> list2 = Arrays.asList(ia); // 会改变原数组</integer></integer></integer></p>
+</li>
+<li>容器不能持有基本类型，但是自动包装机制会自动转换。</li>
+</ol>
+<ul>
+<li><code>Queue</code>和栈的行为，由<code>LinkedList</code>提供支持。</li>
+<li><code>HashMap</code>用于快速访问；<code>TreeMap</code>保持‘键’始终处于排序状态，没有<code>HashMap</code>快；<code>LinkedHashMap</code>保持元素插入的顺序，但也能通过散列提供快速访问。</li>
+<li><code>Set</code>不接受重复元素；<code>HashSet</code>提供最快的查询速度；<code>TreeSet</code>保持元素处于排序状态；<code>LinkedHsahSet</code>以插入顺序保存元素。</li>
+<li>新程序中不应该使用过时的<code>Vector</code>，<code>Hashtable</code>，<code>Stack</code>。</li>
+<li>除了<code>TreeSet</code>，所有<code>Set</code>都有与<code>Collection</code>完全一样的接口。</li>
+<li><code>List</code>和<code>Collection</code>存在着明显的不同，尽管<code>List</code>所要求的方法都在<code>Collection</code>中。</li>
+<li>标记接口<code>java.util.RandomAccess</code>附着到了<code>ArrayList</code>上，而没有附着到<code>LinkedList</code>上。这为想要根据所是有的特定的<code>List</code>而动态修改其行为的算法提供了信息。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/16/Gradle的几个命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Gradle的几个命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/16/JNI学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JNI学习</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JAVA编程思想笔记" data-title="JAVA编程思想笔记" data-url="/2016/02/04/JAVA编程思想笔记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"getnway"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 getNway
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
